@@ -4,12 +4,10 @@ Angular storefront demo with MediaPipe iris-based virtual try-on.
 
 ## Open in StackBlitz
 
-1. Sign in to [StackBlitz](https://stackblitz.com) with the same GitHub account (`LZM6YL_gme`).
+1. Sign in to [StackBlitz](https://stackblitz.com) (GitHub account `ynachar`).
 2. Open:
 
-   https://stackblitz.com/github/LZM6YL_gme/prestige-optics-tryon
-
-Private repo: StackBlitz must be authorized for this GitHub account.
+   https://stackblitz.com/github/ynachar/prestige-optics-tryon
 
 ## Cursor → StackBlitz workflow
 
@@ -19,6 +17,7 @@ cd ~/DEV-Github/prestige-optics-tryon
 git add -A && git commit -m "your message" && git push
 ```
 
+`origin` is https://github.com/ynachar/prestige-optics-tryon (`main`).  
 Then refresh the StackBlitz tab (or reopen the link above).
 
 ## Local
