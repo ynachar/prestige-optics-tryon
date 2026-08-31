@@ -1,10 +1,18 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
+import { Subscription } from "rxjs";
 
 import { menuItems } from "../menu-items";
 import {
   AppLang,
+  isSupportedLang,
   persistLang,
   resolveStoredLang,
   SUPPORTED_LANGS,
@@ -16,11 +24,12 @@ import {
   templateUrl: "./menu.component.html",
   styleUrls: ["./menu.component.css"]
 })
-export class MenuComponent implements OnInit, AfterViewInit {
+export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   menuItems = menuItems;
   langs = [...SUPPORTED_LANGS];
   selectedLang: AppLang = resolveStoredLang();
   keyword = '';
+  private langSub?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,12 +39,21 @@ export class MenuComponent implements OnInit, AfterViewInit {
   ) {}
   
   ngAfterViewInit(): void {
+    this.syncLangSelect();
     this.SetProductTabActive(false);    
   }
 
   ngOnInit() {
     this.selectedLang = resolveStoredLang();
     this.translateService.use(this.selectedLang);
+
+    // Option label re-renders (translate pipe) can reset the native select; re-apply.
+    this.langSub = this.translateService.onLangChange.subscribe((event) => {
+      if (isSupportedLang(event.lang)) {
+        this.selectedLang = event.lang;
+      }
+      queueMicrotask(() => this.syncLangSelect());
+    });
 
     window.onclick = e => {
       this.setActiveTab(e.target);
@@ -52,13 +70,31 @@ export class MenuComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ngOnDestroy() {
+    this.langSub?.unsubscribe();
+  }
+
   switchLang(lang: string) {
+    if (!isSupportedLang(lang) || lang === this.selectedLang) {
+      this.syncLangSelect();
+      return;
+    }
+
     const nextLang = persistLang(lang);
     this.selectedLang = nextLang;
     this.translateService.use(nextLang).subscribe({
       next: () => location.reload(),
       error: () => location.reload(),
     });
+  }
+
+  private syncLangSelect() {
+    const select = document.getElementById(
+      "langSelection",
+    ) as HTMLSelectElement | null;
+    if (select) {
+      select.value = this.selectedLang;
+    }
   }
 
   goToUrl(url: string | string[]) {

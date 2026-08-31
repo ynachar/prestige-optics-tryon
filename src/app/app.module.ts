@@ -2,7 +2,7 @@ import { inject, NgModule, provideAppInitializer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   TranslatePipe,
   TranslateService,
@@ -104,6 +104,7 @@ const appRoutes: Routes = [
     BrowserModule,
     CountdownComponent,
     TranslatePipe,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes, {
       onSameUrlNavigation: 'ignore',

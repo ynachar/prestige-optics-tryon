@@ -16,7 +16,8 @@
     <div class="langSelectionBox">
       <select
         id="langSelection"
-        [value]="selectedLang"
+        name="langSelection"
+        [ngModel]="selectedLang"
         (change)="switchLang($any($event.target).value)"
       >
         <option *ngFor="let language of langs" [value]="language">
