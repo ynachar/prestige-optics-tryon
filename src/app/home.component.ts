@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { fitGlassesOverlay } from '../try-on-fit';
 
 @Component({
+  standalone: false,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']

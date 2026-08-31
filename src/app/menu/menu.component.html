@@ -14,11 +14,13 @@
       <input id="searchTextBox" class="searchTextBox" (keydown.enter)="searchIconClick()" placeholder="Search" type="text" required/>
     </div>
     <div class="langSelectionBox">
-      <select id="langSelection" (change)="switchLang(langSelection.value)" #langSelection>
-        <option *ngFor="let language of this.translateService.getLangs()" 
-              [value]="language"
-              [selected]="language === this.translateService.currentLang">
-              {{ language | translate}}
+      <select
+        id="langSelection"
+        [value]="selectedLang"
+        (change)="switchLang($any($event.target).value)"
+      >
+        <option *ngFor="let language of langs" [value]="language">
+          {{ language | translate }}
         </option>
       </select>
     </div>

@@ -8,6 +8,7 @@ import { contactInfo } from '../contact-info';
 })
 
 @Component({
+  standalone: false,
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css']

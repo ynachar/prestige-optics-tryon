@@ -67,6 +67,7 @@
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      defer
     ></script>
 
     <script
@@ -80,8 +81,19 @@
 
     <!--<script src="https://static.fittingbox.com/api/v1/fitmix.js" defer></script>-->
 
-    <script type="application/json">
-      $(document).ready(function() {
+    <script defer>
+      function whenSlickReady(fn) {
+        if (window.jQuery && window.jQuery.fn && typeof window.jQuery.fn.slick === 'function') {
+          fn(window.jQuery);
+          return;
+        }
+        setTimeout(function () {
+          whenSlickReady(fn);
+        }, 30);
+      }
+
+      whenSlickReady(function ($) {
+        $(document).ready(function() {
         //runMultiSelect();
 
         //Home page try on preview fix
@@ -89,8 +101,8 @@
 
         //Fix for mouse back button click for home page slick
         $(window).on('popstate', function() {
-          if(window.location.pathname == "/" || window.location.pathname == "" || window.location.pathname.toLowerCase() == "\home")
-            location.reload(true);
+          if(window.location.pathname == "/" || window.location.pathname == "" || window.location.pathname.toLowerCase() == "/home")
+            location.reload();
         });
 
         //console.log('location.path: ' + location.path);
@@ -118,20 +130,29 @@
         );
         */
       });
+      });
 
       window.addEventListener('ngRunSlick', function(e) {
-        reRunSlick();
+        whenSlickReady(function () {
+          reRunSlick();
+        });
       });
 
       window.addEventListener('ngRunMultiSelect', function(e) {
-        runMultiSelect();
+        whenSlickReady(function () {
+          runMultiSelect();
+        });
       });
 
       window.addEventListener('ngRunFlatPickr', function(e) {
-        runFlatPickr();
+        whenSlickReady(function () {
+          runFlatPickr();
+        });
       });
 
       function runFlatPickr() {
+        if (!window.jQuery || !$("#dateTimePicker").length) return;
+        if (typeof Date.prototype.fp_incr !== 'function') return;
         $("#dateTimePicker").flatpickr({
           enableTime: true,
           time_24hr: true,
@@ -214,6 +235,7 @@
 
       function destroySlick() {
         //console.log('destroySlick() called...');
+        if (!window.jQuery || !window.jQuery.fn.slick) return;
 
         if ($(".banners").hasClass('slick-initialized')) {
           $(".banners").slick('destroy');
@@ -243,6 +265,9 @@
 
       function runSlick() {
         //console.log('runSlick() called...');
+        if (!window.jQuery || !window.jQuery.fn.slick) return;
+        if (!$(".banners").length && !$(".brands").length && !$(".products").length) return;
+
         $(".banners").slick({
           autoplay: false,
           autoplayspeed: 15000,

@@ -1,13 +1,21 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule, provideAppInitializer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { CountdownModule } from 'ngx-countdown';
+import {
+  TranslatePipe,
+  TranslateService,
+  provideTranslateLoader,
+  provideTranslateService,
+} from '@ngx-translate/core';
+import {
+  TranslateHttpLoader,
+  provideTranslateHttpLoader,
+} from '@ngx-translate/http-loader';
+import { CountdownComponent } from 'ngx-countdown';
+import { firstValueFrom } from 'rxjs';
 
-//Components
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -23,84 +31,84 @@ import { RequestShowingComponent } from './request-showing/request-showing.compo
 import { TryOnDemoComponent } from './try-on-demo/try-on-demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-//Servcices
 import { CartService } from './cart.service';
 import { EmailService } from './email.service';
 import { CrudService } from './crud.service';
+import {
+  DEFAULT_LANG,
+  resolveStoredLang,
+  SUPPORTED_LANGS,
+} from './language';
 
 import { LazyImgDirective } from './lazyimg.directive';
 
 import { ProductList2Component } from './product-list2/product-list2.component';
 import { ContactLensesComponent } from './contact-lenses/contact-lenses.component';
 
-const appRoutes: Routes = [
-  { path: 'product-list2', component: ProductList2Component },
-  
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'product-list', component: ProductListComponent },  
-  { 
-    path: 'product-list/brand/:brand', 
-    component: ProductListComponent, 
-    runGuardsAndResolvers: 'always', //paramsChange
-  },
-  { 
-    path: 'product-list/:type', 
-    component: ProductListComponent, 
-    runGuardsAndResolvers: 'always', //paramsChange
-  },
-  { 
-    path: 'product-list/promo/:promo', 
-    component: ProductListComponent, 
-    runGuardsAndResolvers: 'always', //paramsChange
-  },
-  { 
-    path: 'product-list/keyword/:keyword', 
-    component: ProductListComponent, 
-    runGuardsAndResolvers: 'always', //paramsChange
-  },
-  { 
-    path: 'product-list/gender/:gender', 
-    component: ProductListComponent, 
-    runGuardsAndResolvers: 'always', //paramsChange
-  },
-  { 
-    path: 'product-list/:type/gender/:gender', 
-    component: ProductListComponent, 
-    runGuardsAndResolvers: 'always', //paramsChange
-  },
-  { path: 'products/:productId', component: ProductDetailsComponent},
-  { path: 'cart', component: CartComponent },
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'request-showing', component: RequestShowingComponent },  
-  { path: 'try-on-demo', component: TryOnDemoComponent },
-  { path: 'contact-lenses', component: ContactLensesComponent },  
-  { path: '**', component: PageNotFoundComponent }
-];
-
-export function TranslationLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+function initLanguage() {
+  const translate = inject(TranslateService);
+  const lang = resolveStoredLang();
+  translate.addLangs([...SUPPORTED_LANGS]);
+  translate.setFallbackLang(DEFAULT_LANG);
+  return firstValueFrom(translate.use(lang));
 }
 
+const appRoutes: Routes = [
+  { path: 'product-list2', component: ProductList2Component },
+
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'product-list', component: ProductListComponent },
+  {
+    path: 'product-list/brand/:brand',
+    component: ProductListComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'product-list/:type',
+    component: ProductListComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'product-list/promo/:promo',
+    component: ProductListComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'product-list/keyword/:keyword',
+    component: ProductListComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'product-list/gender/:gender',
+    component: ProductListComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'product-list/:type/gender/:gender',
+    component: ProductListComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  { path: 'products/:productId', component: ProductDetailsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'request-showing', component: RequestShowingComponent },
+  { path: 'try-on-demo', component: TryOnDemoComponent },
+  { path: 'contact-lenses', component: ContactLensesComponent },
+  { path: '**', component: PageNotFoundComponent },
+];
+
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    CountdownModule,
+    CountdownComponent,
+    TranslatePipe,
     ReactiveFormsModule,
-    HttpClientModule,
     RouterModule.forRoot(appRoutes, {
-        onSameUrlNavigation: 'ignore',
-        enableTracing: false, //debugging         
-      }
-    ),
-    TranslateModule.forRoot( {
-      loader: {
-        provide: TranslateLoader, 
-        useFactory: TranslationLoaderFactory, 
-        deps: [HttpClient]
-      }
-    })
+      onSameUrlNavigation: 'ignore',
+      enableTracing: false,
+    }),
   ],
   declarations: [
     AppComponent,
@@ -119,9 +127,23 @@ export function TranslationLoaderFactory(http: HttpClient) {
     ProductList2Component,
     TryOnDemoComponent,
     ContactLensesComponent,
-    LazyImgDirective
-  ],  
-  providers: [CartService, EmailService, CrudService]
-
+    LazyImgDirective,
+  ],
+  providers: [
+    CartService,
+    EmailService,
+    CrudService,
+    provideHttpClient(withInterceptorsFromDi()),
+    provideTranslateHttpLoader({
+      prefix: './assets/i18n/',
+      suffix: '.json',
+    }),
+    provideTranslateService({
+      loader: provideTranslateLoader(TranslateHttpLoader),
+      fallbackLang: DEFAULT_LANG,
+      lang: DEFAULT_LANG,
+    }),
+    provideAppInitializer(initLanguage),
+  ],
 })
-export class AppModule { }
+export class AppModule {}

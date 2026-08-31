@@ -8,8 +8,8 @@
   width: 1200px;
   padding: inherit;
   height: inherit;
-  margin: 0 auto;  
-  padding-left: 0px;   
+  margin: 0 auto;
+  padding-left: 0px;
 }
 
 .contactContainer {
@@ -20,8 +20,8 @@
   width: 200px;
   padding: inherit;
   height: 55px;
-  margin: 0 auto;  
-  padding-left: 0px;  
+  margin: 0 auto;
+  padding-left: 0px;
 }
 
 .contactBox {
@@ -32,9 +32,9 @@
   width: 200px;
   padding: inherit;
   height: 55px;
-  margin: 0 auto;  
-  padding-left: 0px; 
-  margin-right: 20px;  
+  margin: 0 auto;
+  padding-left: 0px;
+  margin-right: 20px;
 }
 
 .contactBox div {
@@ -43,29 +43,29 @@
   display: block;
   float: right;
   width: 30px;
-  height: 30px;  
+  height: 30px;
   padding: 5px 5px 5px -5px;
   margin-left: 7px;
   border-radius: 20px;
 }
 
-.contactContainer .material-icons {  
+.contactContainer .material-icons {
   color: white;
   font-size: 18px;
-  padding: 4px;  
+  padding: 4px;
 }
 
-.contactBox div:nth-child(3):hover { 
+.contactBox div:nth-child(3):hover {
   border: solid 2px transparent;
   background-color: blueviolet;
 }
 
-.contactBox div:nth-child(2):hover { 
+.contactBox div:nth-child(2):hover {
   border: solid 2px transparent;
   background-color: green;
 }
 
-.contactBox div:nth-child(1):hover { 
+.contactBox div:nth-child(1):hover {
   border: solid 2px transparent;
   background-color: navy;
 }
@@ -76,7 +76,7 @@
   display: block;
   float: left;
   width: auto;
-  margin: 10px auto  
+  margin: 10px auto;
 }
 
 .logo a {
@@ -85,49 +85,68 @@
 
 h1 {
   border: solid 0px black;
-  font-style: italic;
-  font-weight: bolder;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   position: relative;
   display: block;
   float: left;
-  width: 220px;
+  width: 280px;
   color: white;
   margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 h5 {
   border: solid 0px black;
-  font-style: italic;
-  font-weight: bolder;
+  font-style: normal;
+  font-weight: 500;
   position: relative;
-  display: block;  
-  width: 220px;
-  color: white;
+  display: block;
+  width: 280px;
+  color: rgba(255, 255, 255, 0.82);
   margin: 0;
-  letter-spacing: 3.6px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.topBarActions {
+  position: relative;
+  float: right;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 15px 0;
+  z-index: 40;
 }
 
 .cartBtn {
   border: solid 0px black;
   position: relative;
-  float: right;
+  float: none;
   width: 60px;
-  margin: 15px auto;  
+  margin: 0;
+  padding: 6px 8px;
+  min-height: 36px;
+  box-sizing: border-box;
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .itemsCnt {
-  border: solid 2px #1976d2;
+  border: var(--itemsCntBrdr, solid 2px #ffffff);
   position: absolute;
-  right: 6px;
-  top: 11px;
-  color: blue;
+  right: 2px;
+  top: 2px;
+  color: var(--itemsCntColor, #0c2340);
   font-weight: bold;
   font-size: 14px;
   width: 20px;
-  background-color: lightcyan;
+  background-color: #e3f2fd;
   border-radius: 20px;
   text-align: center;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .btnHidden {
@@ -139,52 +158,119 @@ h5 {
 }
 
 .checkout {
-  color: slateblue;
+  color: var(--checkoutColor, #ffffff);
   font-size: 16px;
   font-weight: bold;
 }
 
-.themeSelction {
-  border: solid 0px black;
+.themeMenu {
   position: relative;
-  display: block;
-  float: right;
-  width: 100px;
-  height: 40px;  
-  margin: 15px auto;    
+  float: none;
+  margin: 0;
+  z-index: 40;
 }
 
-.blueTheme {
-  border: solid 2px lightskyblue;
-  float: right;
-  width: 30px;
-  height: 30px;
-  background-color: slateblue;
-  border-radius: 25px;
-  margin: 5px;
-  box-shadow: inset 0 0 7px 1px skyblue;
-}
-
-.darkGrayTheme {
-  border: solid 2px lightslategray;
-  float: right;
-  width: 30px;
-  height: 30px;
-  background-color: #252526;
-  border-radius: 25px;
-  margin: 5px;
-  box-shadow: inset 0 0 7px 1px slategray;
-}
-
-.blueTheme:hover, .darkGrayTheme:hover {
+.themeMenuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 8px;
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
   cursor: pointer;
-  transform: scale(1.15);
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.themeMenuBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  opacity: 1;
+}
+
+.themeMenuBtn .material-icons {
+  font-size: 20px;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.themeChevron {
+  font-size: 18px !important;
+  opacity: 0.85;
+}
+
+.themeDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 148px;
+  padding: 6px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(12, 35, 64, 0.22);
+  border: 1px solid #d7e3f4;
+}
+
+.themeOption {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #0c2340;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.themeOption .material-icons {
+  font-size: 18px;
+  color: #1565c0;
+  padding: 0;
+  margin: 0;
+}
+
+.themeOption:hover {
+  background: #eef4fb;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.themeOption.active {
+  background: #e3f0fc;
+  font-weight: 600;
+}
+
+:host-context(body.darkGrayTheme) .themeDropdown {
+  background: #161b22;
+  border-color: #30363d;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+}
+
+:host-context(body.darkGrayTheme) .themeOption {
+  color: #e6edf3;
+}
+
+:host-context(body.darkGrayTheme) .themeOption .material-icons {
+  color: #58a6ff;
+}
+
+:host-context(body.darkGrayTheme) .themeOption:hover,
+:host-context(body.darkGrayTheme) .themeOption.active {
+  background: #21262d;
 }
 
 /***************************************/
 
 @media screen and (max-width: 710px) {
-  
   .contactContainer {
     border: dotted 0px black;
     position: fixed;
@@ -195,9 +281,8 @@ h5 {
     width: 100%;
     padding: inherit;
     height: 40px;
-    margin: 0 auto; 
-     
-    background-color: skyblue;
+    margin: 0 auto;
+    background-color: var(--contactContainerBgColor, skyblue);
     z-index: 1000;
   }
 
@@ -216,73 +301,63 @@ h5 {
     position: relative;
     display: inline-block;
     width: 30px;
-    height: 30px;  
+    height: 30px;
     padding: 5px 5px 5px -5px;
-    margin: -20px 10px -5px 10px;    
+    margin: -20px 10px -5px 10px;
     border-radius: 20px;
   }
 
-  .contactContainer .material-icons {  
+  .contactContainer .material-icons {
     color: white;
     font-size: 20px;
-    padding: 3px;  
+    padding: 3px;
   }
-  
+
   .logo {
-    width: 70%;   
+    width: 70%;
     padding-top: 5px;
-    margin-left: 5%; 
+    margin-left: 5%;
   }
 
   h1 {
-    font-size: 24px;    
+    font-size: 24px;
   }
 
   h5 {
     font-size: 12px;
     letter-spacing: 2px;
   }
-  
+
   .topBarContainer {
     border: solid 0px black;
     min-width: unset;
     width: 100%;
     margin: 15% auto;
-  }  
-
-  .cartBtn {
-    position: absolute;
-    right: 0.5em;
   }
 
-  .themeSelction {
-    width: 100px;
-    height: 40px;
-    top: 65px;
-    right: 3em;
+  .topBarActions {
+    position: absolute;
+    top: 10px;
+    right: 0.5em;
+    margin: 0;
+  }
+
+  .cartBtn {
+    position: relative;
+    right: auto;
   }
 }
 
-@media screen and (max-width: 600px) {   
+@media screen and (max-width: 600px) {
   .cartBtn {
-    position: absolute;
-    margin: 15px auto;  
     width: auto;
   }
-  
+
   .material-icons {
     margin-right: -4px;
   }
 
   .checkout {
     display: none;
-  }
-}
-
-@media screen and (max-width: 400px) {   
-  .themeSelction {
-    border: solid 0px black;
-    top: -5px;
-    right: 4em;
   }
 }

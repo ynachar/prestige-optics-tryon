@@ -27,3 +27,5 @@ Then refresh the StackBlitz tab (or reopen the link above).
 npm install
 npm start
 ```
+
+App runs at http://localhost:4200/

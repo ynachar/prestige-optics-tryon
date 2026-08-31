@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-modal-box',
   templateUrl: './modal-box.component.html',
   styleUrls: ['./modal-box.component.css']

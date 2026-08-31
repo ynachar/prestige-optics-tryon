@@ -27,23 +27,69 @@
     </div>    
   </div>
   <div id="searchFiltersBox" class="searchFiltersBox">
-    <div id="genderFilterBox" class="filterBox">
-      <select id="genderSelect" multiple>
-        <option value='K'>Kid</option>
-        <option value='M'>Male</option>
-        <option value='F'>Female</option>
+    <div
+      id="genderFilterBox"
+      class="filterBox"
+      [class.filterBoxDisabled]="isGenderLockedFromUrl"
+    >
+      <label class="filterLabel" for="genderSelect">{{ 'Gender' | translate }}</label>
+      <select
+        id="genderSelect"
+        class="filterSelect"
+        multiple
+        size="3"
+        [attr.aria-disabled]="isGenderLockedFromUrl"
+        [attr.title]="
+          isGenderLockedFromUrl ? 'Gender is set by the current page' : null
+        "
+        (mousedown)="toggleFilterOption($event)"
+      >
+        <option
+          value="K"
+          [class.filterOptionSelected]="isUrlGenderSelected('K')"
+        >
+          Kid
+        </option>
+        <option
+          value="M"
+          [class.filterOptionSelected]="isUrlGenderSelected('M')"
+        >
+          Male
+        </option>
+        <option
+          value="F"
+          [class.filterOptionSelected]="isUrlGenderSelected('F')"
+        >
+          Female
+        </option>
       </select>
     </div>
     <div id="brandFilterBox" class="filterBox">
-      <select id="brandSelect" multiple>
-        <option *ngFor="let brand of brands | slice:0:-1" value='{{brand.name}}'>{{brand.name}}</option>        
+      <label class="filterLabel" for="brandSelect">{{ 'Brand' | translate }}</label>
+      <select
+        id="brandSelect"
+        class="filterSelect"
+        multiple
+        size="3"
+        (mousedown)="toggleFilterOption($event)"
+      >
+        <option *ngFor="let brand of filterBrands" [value]="brand.name">
+          {{ brand.name }}
+        </option>
       </select>
     </div>
     <div id="shapeFilterBox" class="filterBox">
-      <select id="shapeSelect" multiple>
-        <option value='O'>Oval</option>
-        <option value='R'>Rectangle</option>        
-        <option value='S'>Square</option>      
+      <label class="filterLabel" for="shapeSelect">{{ 'Shape' | translate }}</label>
+      <select
+        id="shapeSelect"
+        class="filterSelect"
+        multiple
+        size="3"
+        (mousedown)="toggleFilterOption($event)"
+      >
+        <option *ngFor="let shape of filterShapes" [value]="shape">
+          {{ shape }}
+        </option>
       </select>
     </div>
   </div>
@@ -69,7 +115,16 @@
         <div id="imgBox_{{product.id}}" class="imgBox" (mouseover)="mouseOver(product.id)" (mouseleave)="mouseLeave(product.id)" onclick="return false;">
           <div class="mySlides fade" *ngFor="let img of product.img; let i = index;">
             <div class="numberText" hidden>{{i+1}} / {{product.img.length}}</div>
-            <img id="imgProduct" appImgLazy src="placeholder.jpg" data-src="{{img}}" (mouseover)="currentSlide(2, product.id)" (mouseleave)="currentSlide(1, product.id)" style="width: 95%;" alt="image"/>
+            <img
+              id="imgProduct"
+              appImgLazy
+              [src]="img"
+              loading="lazy"
+              (mouseover)="currentSlide(2, product.id)"
+              (mouseleave)="currentSlide(1, product.id)"
+              style="width: 95%"
+              alt="image"
+            />
           </div>
         
           <a id="prev_{{product.id}}" class="prev" (click)="plusSlides(-1, product.id)" style="visibility: visible">&#10094;</a>

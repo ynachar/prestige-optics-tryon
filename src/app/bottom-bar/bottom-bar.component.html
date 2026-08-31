@@ -1,4 +1,4 @@
-<div class="app-bottom-bar" style="background-color: #1976d2;">
+<div class="app-bottom-bar">
   <div class="footerContainer">
     <div class="logoCopyrightsBox">
       <h3>Prestige Optics</h3>
@@ -35,8 +35,15 @@
         </li>
       </ul>
     </div>
-    <a id="btnScrollTop" class="scrollTop" (click)="scrolToTop()">
-      <div>&#x2227;</div>
+    <a
+      id="btnScrollTop"
+      class="scrollTop scrollTopHidden"
+      href="#top"
+      (click)="scrolToTop($event)"
+      aria-label="Scroll to top"
+      title="Back to top"
+    >
+      <i class="material-icons">keyboard_arrow_up</i>
     </a>
   </div>
   <div class="ownerBox">

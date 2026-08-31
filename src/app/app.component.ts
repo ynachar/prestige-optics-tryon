@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ],  

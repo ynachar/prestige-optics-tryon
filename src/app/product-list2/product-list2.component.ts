@@ -1,4 +1,3 @@
-import { stringify } from '@angular/compiler/src/util';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { CrudService } from '../crud.service';
@@ -8,6 +7,7 @@ import { Utils } from '../utils';
 //import { products } from '../products';
 
 @Component({
+  standalone: false,
   selector: 'app-product-list',
   templateUrl: './product-list2.component.html',
   styleUrls: ['./product-list2.component.css']

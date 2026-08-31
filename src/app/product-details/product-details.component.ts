@@ -18,6 +18,7 @@ declare var tracking: any;
 declare var jQuery: any;
 
 @Component({
+  standalone: false,
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
@@ -59,7 +60,7 @@ export class ProductDetailsComponent
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      var prodId = [+params.get('productId')];
+      var prodId = +params.get('productId');
       this.product = products.find((ele) => ele.id == prodId);
     });
   }

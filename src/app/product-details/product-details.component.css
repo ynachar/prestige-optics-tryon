@@ -3,17 +3,18 @@
 }
 
 .pageTitle {
-  border: solid 1px lightcyan;
+  border: solid 1px var(--pageTitleBrdrColor, transparent);
   position: relative;
   display: block;
-  background-color: lightblue;
+  background-color: var(--pageTitleBgColor, #e8f1fb);
   width: 100%;
   height: 60px;
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 5px;
-
   font-weight: bold;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .pageTitle h4 {
@@ -25,11 +26,16 @@
   font-weight: normal;
   margin-top: 18px;
   margin-bottom: 18px;
+  color: var(--pageTitleColor, #0c2340);
+}
+
+.pageTitle h4 a {
+  color: var(--pageTitleColor, #0c2340);
 }
 
 .backToListBtn {
-  background-color: #1976d2;
-  color: white;
+  background-color: var(--btnsBgColor, #1976d2);
+  color: var(--btnsColor, #ffffff);
   width: 120px;
   border-radius: 2px;
   text-align: center;
@@ -42,9 +48,9 @@
 }
 
 .saleHeader {
-  border: solid 1px lightsalmon;
-  color: red;
-  background-color: lightgoldenrodyellow;
+  border: var(--saleHdrBrdr, solid 1px lightsalmon);
+  color: var(--saleHdrColor, red);
+  background-color: var(--saleHdrBgColor, lightgoldenrodyellow);
   padding: 10px;
   max-width: 160px;
   border-radius: 5px;
@@ -80,8 +86,8 @@
 }
 
 #imgProduct {
-  border: double 1px aquamarine;
-  background-color: azure;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
+  background-color: var(--prodBoxBgColor, #ffffff);
 }
 
 #imgBox:hover {
@@ -92,8 +98,8 @@
   position: relative;
   width: 335px;
   height: 285px;
-  border: 1px dashed #555;
-  background-color: #fff;
+  border: 1px dashed var(--prodBoxBrdrColor, #555);
+  background-color: var(--prodBoxBgColor, #ffffff);
 }
 
 .thumbnail {
@@ -106,21 +112,24 @@
 }
 
 .specsBox {
-  border: solid 1px lightblue;
-  color: black;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
+  color: var(--globalColor, #1e293b);
   position: relative;
   display: block;
   float: left;
+  clear: left;
   width: 100%;
   height: auto;
   padding: 15px;
   margin: 5px;
-  border-radius: 2px;
+  border-radius: 8px;
+  background-color: var(--prodBoxBgColor, #ffffff);
+  box-sizing: border-box;
 }
 
 .specSection {
   border: dotted 0px lightblue;
-  color: black;
+  color: var(--globalColor, #1e293b);
   position: relative;
   display: block;
   float: left;
@@ -135,16 +144,16 @@
 }
 
 .noTryOnBox {
-  border: solid 1px lightgray;
-  background-color: lightcyan;
-  color: black;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
+  background-color: var(--prodBoxBgColor, #ffffff);
+  color: var(--globalColor, #1e293b);
   position: relative;
   display: block;
   width: 55%;
   height: 100px;
   padding: 16px;
   margin: 5px;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 p {
@@ -177,24 +186,66 @@ p {
   border: solid 0px green;
   position: relative;
   width: 59%;
-  min-height: 250px;
+  min-height: 180px;
+  color: var(--globalColor, #1e293b);
+}
+
+.addToCartBtn {
+  position: relative;
+  display: block;
+  float: left;
+  clear: left;
+  width: 59%;
+  margin: 4px 5px 12px;
+  box-sizing: border-box;
+}
+
+.addToCartBtn button {
+  width: auto;
+  min-width: 160px;
+  text-transform: uppercase;
+}
+
+.prodDetails h4,
+.prodDetails h5 {
+  color: var(--globalColor, #1e293b);
 }
 
 .prodDetails h5 {
   width: 97%;
 }
 
+.prodDetails .priceBox {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.5em;
+  width: auto;
+  margin: 0 0 8px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.prodDetails .priceBox h4 {
+  display: inline;
+  float: none;
+  margin: 0;
+  white-space: nowrap;
+}
+
 .imgBox {
   position: absolute;
   z-index: 0;
-  background-color: white;
+  background-color: var(--prodBoxBgColor, #ffffff);
   width: 40%;
   height: 220px;
   margin: 5px;
-  border-radius: 2px;
+  border-radius: 8px;
   top: 80px;
   right: 5px;
-  box-shadow: 0px 0px 5px 1px lightsteelblue;
+  box-shadow: var(--prodBoxShadowHover, 0px 0px 5px 1px lightsteelblue);
+  border: 1px solid var(--prodBoxBrdrColor, #d5e3f5);
 }
 
 .imgBoxModal {
@@ -243,7 +294,7 @@ p {
   display: block;
   width: 100%;
   min-height: 460px;
-  background-color: #e8e8e8;
+  background-color: var(--bodyBgColor, #e8e8e8);
   overflow: hidden;
   z-index: 1;
 }
@@ -566,22 +617,21 @@ p {
   }
 
   .addToCartBtn {
-    position: absolute;
-    top: 270px;
-    left: 5px;
-    width: 99%;
-    margin: 0 auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    float: none;
+    width: 100%;
+    margin: 0 0 12px;
   }
 
   .addToCartBtn button {
     font-size: 16px;
     padding: 10px 12px 10px 12px;
-
     width: 100%;
     position: relative;
     display: block;
-    float: left;
-
+    float: none;
     text-transform: uppercase;
   }
 
@@ -630,7 +680,7 @@ p {
   .try-upload .main-photo {
     height: auto;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--prodBoxBgColor, #ffffff);
   }
 
   .try-upload .tryUploadContainer {
@@ -769,7 +819,7 @@ img {
 .dots {
   position: absolute;
   text-align: center;
-  bottom: 2px;
+  bottom: 18px;
   width: 100%;
 }
 
@@ -781,14 +831,14 @@ img {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbb;
+  background-color: var(--dotColor, #bbb);
   border-radius: 50%;
   transition: background-color 0.6s ease;
 }
 
-.imgBox .active,
-imgBox .dot:hover {
-  background-color: #717171;
+.imgBox .dot.active,
+.imgBox .dot:hover {
+  background-color: var(--dotActiveColor, #717171);
 }
 
 /* Fading animation */

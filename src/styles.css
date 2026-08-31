@@ -34,23 +34,51 @@ body {
   display: flex;
   flex-direction: row;
   padding: 12px 20px 10px 20px;
-  margin-bottom: 50px;
-  justify-content: space-between;
+  margin: 0 auto 50px;
+  justify-content: center;
   vertical-align: top;
   width: 100%;
+  max-width: 1200px;
   min-height: 550px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(12, 35, 64, 0.04), 0 10px 28px rgba(12, 35, 64, 0.07);
+  overflow: hidden;
 }
 
 .crossedLine {
-  float: left;
+  display: inline;
+  float: none;
   text-decoration: line-through;
   margin: 0;
-  padding-right: 10px;
+  padding-right: 0.5em;
+  white-space: nowrap;
 }
 
 .salePrice {
+  display: inline;
   color: red;
   font-weight: bold;
+  white-space: nowrap;
+}
+
+.priceBox {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5em;
+  white-space: nowrap;
+}
+
+.priceBox h5,
+.priceBox .crossedLine,
+.priceBox .salePrice {
+  display: inline;
+  float: none;
+  width: auto;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .rect {
@@ -90,10 +118,6 @@ router-outlet + *  {
   outline: none;
 }
 
-.slick-dots li button:before {
-  color: #1976d2 !important;
-}
-
 .banners .slick-prev,
 .banners .slick-next {
   z-index: 500;
@@ -111,13 +135,18 @@ router-outlet + *  {
 
 .slick-prev:before,
 .slick-next:before {
-  color: lightslategrey !important;
   font-size: 2.5vw;
-  opacity: 0.3;
 }
 
-.banners .slick-dots {
-  bottom: 5px;
+.banners .slick-dots,
+.slogans .slick-dots {
+  bottom: 18px !important;
+}
+
+.banners .slick-prev:before,
+.banners .slick-next:before {
+  color: var(--slickArrowColor, #0c2340) !important;
+  opacity: 0.55 !important;
 }
 
 .brands .slick-next {
@@ -138,11 +167,6 @@ ol > li {
   text-align: left;
 }
 
-ol > li,
-.slick-dots li button:before {
-  font-size: 18px;
-}
-
 .slogans .slick-slide p {
   font-size: 1.17em;
 }
@@ -152,38 +176,35 @@ ol > li,
   font-weight: bold;
 }
 
-.slogans .slick-dots {
-  bottom: 5px;
-}
-
 .slogans .slick-slide:nth-child(2) {
-  background: linear-gradient(to right, lightcyan, 55%, cadetblue) !important;
+  background: linear-gradient(120deg, #e3f2fd 0%, #bbdefb 50%, #64b5f6 100%) !important;
 }
 
 .slogans .slick-slide:nth-child(3) {
-  background: linear-gradient(to right, #fbf7eb, 55%, #c1baaa) !important;
+  background: linear-gradient(120deg, #e8eaf6 0%, #c5cae9 50%, #7986cb 100%) !important;
 }
 
 /**********************/
 
-router-outlet + * {
-  border: solid 0px blue;
-  position: relative;
-  display: inline-flex;
-  max-width: 1200px;
-  height: inherit;
-  margin: 0 auto;
-}
-
+router-outlet + *,
 app-home,
 app-product-list,
 app-product-details,
 app-cart,
 app-contact-us,
 app-request-showing,
+app-try-on-demo,
+app-contact-lenses,
 app-page-not-found {
+  border: solid 0px blue;
+  position: relative;
+  display: block;
   width: 100%;
+  max-width: 1200px;
+  height: inherit;
+  margin: 0 auto;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 app-root,
@@ -220,22 +241,23 @@ p {
 
 a {
   cursor: pointer;
-  color: #1976d2;
+  color: var(--prodBoxAnchorColor, #1565c0);
   text-decoration: none;
 }
 
 a:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* Input */
 
 input {
   font-size: 14px;
-  border-radius: 2px;
-  padding: 8px;
+  border-radius: 8px;
+  padding: 10px 12px;
   margin-bottom: 16px;
-  border: 1px solid #bdbdbd;
+  border: 1px solid #c5d4e8;
+  background: #fff;
 }
 
 label {
@@ -251,33 +273,86 @@ label {
 button {
   display: inline-flex;
   align-items: center;
-  padding: 8px 16px;
-  border-radius: 2px;
+  padding: 10px 18px;
+  border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
-  background-color: #1976d2;
-  color: white;
+  background-color: var(--btnsBgColor, #1565c0);
+  color: var(--btnsColor, #ffffff);
   border: none;
   outline: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+/* Slick controls must not inherit primary button chrome */
+.slick-prev,
+.slick-next,
+.slick-dots li button {
+  display: block;
+  padding: 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.slick-prev:hover,
+.slick-next:hover,
+.slick-dots li button:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  opacity: 1;
+  filter: none !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: var(--slickArrowColor, lightslategrey) !important;
+  opacity: 0.55 !important;
+  font-size: 2.5vw;
+}
+
+.slick-dots li button:before {
+  color: var(--slickDotsColor, #90a4ae) !important;
+  opacity: 0.45 !important;
+  font-size: 10px !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--slickDotsActiveColor, #1565c0) !important;
+  opacity: 1 !important;
+}
+
+/* Never style carousel chrome as primary CTA buttons */
+.slick-dots li button,
+.slick-prev,
+.slick-next {
+  background-image: none !important;
 }
 
 .button:hover,
 button:hover {
-  opacity: 0.8;
+  opacity: 0.92;
   font-weight: normal;
+  box-shadow: 0 6px 16px rgba(21, 101, 192, 0.25);
 }
 
 .button:disabled,
 button:disabled {
   opacity: 0.5;
   cursor: auto;
+  box-shadow: none;
 }
 
 /* Fancy Button */
 
 .fancy-button {
   background-color: transparent;
-  color: #1976d2;
+  color: var(--fancyButtonColor, #ffffff);
 }
 
 .fancy-button i.material-icons {
@@ -289,167 +364,347 @@ button:disabled {
 * Universal colors
 **************************/
 .blueTheme {
-  --globalColor: #616161;
-  /*1/24/2021
-  --appTopBarBgImg: linear-gradient(#4d96de, 35%, #68b4ff);*/
-  --appTopBarBgImg: linear-gradient(#6eb7ff, 50%, #93c9ff);
-  --appTopBarBgColor: #93c9ff;
-  /*1/24/2021
-  --appMenuBgImg: linear-gradient(#93c9ff, 55%, rgba(70, 15, 130, 2));
-  */
-  --appMenuBgImg: linear-gradient(#93c9ff, 15%, #4d96de);
-  /*1/24/2021
-  --appBottomBarBgImg: linear-gradient(#68b4ff, 35%, rgba(70, 15, 130, 2));  */
-  --appBottomBarBgImg: linear-gradient(#93c9ff, 15%, #4d96de);
-  --fancyButtonColor: white;
+  --globalColor: #1e293b;
 
-  --menuItemBrdrLeftColor: #1956d2;
+  --appTopBarBgImg: linear-gradient(165deg, #0c2340 0%, #143d6b 55%, #1756a0 100%);
+  --appTopBarBgColor: #0c2340;
+  --appMenuBgImg: linear-gradient(180deg, #143d6b 0%, #1565c0 100%);
+  --appBottomBarBgImg: linear-gradient(180deg, #143d6b 0%, #0c2340 100%);
+  --fancyButtonColor: #ffffff;
 
-  --menuItemHoverBgImg: linear-gradient(#93c9ff, #4d96de);
-  --menuItemHoverBrdrBottomColor: wheat;
+  --menuItemBrdrLeftColor: #64b5f6;
+  --menuItemHoverBgImg: linear-gradient(180deg, #1e88e5 0%, #1565c0 100%);
+  --menuItemHoverBrdrBottomColor: #90caf9;
+  --menuItemActiveBgImage: linear-gradient(180deg, #42a5f5 0%, #0d47a1 100%);
 
-  --menuItemActiveBgImage: linear-gradient(#93c9ff, #4d96de);
+  --dotColor: #90a4ae;
+  --dotActiveColor: #1565c0;
 
-  --pageTitleBrdrColor: lightcyan;
-  --pageTitleBgColor: lightblue;
-  --pageTitleColor: #616161;
-  --prodBoxBgColor: white;
-  --prodBoxBrdrColor: lightskyblue;
-  --prodBoxHoverBgColor: #eeffff;
-  --prodBoxShadowHover: 0px 0px 15px 3px lightsteelblue;
+  --pageTitleBrdrColor: transparent;
+  --pageTitleBgColor: #e8f1fb;
+  --pageTitleColor: #0c2340;
+  --prodBoxBgColor: #ffffff;
+  --prodBoxBrdrColor: #d5e3f5;
+  --prodBoxHoverBgColor: #f4f8fd;
+  --prodBoxShadowHover: 0 10px 28px rgba(12, 35, 64, 0.12);
 
-  --titleBoxBgColor: #f0ffff !important;
+  --titleBoxBgColor: #edf2f8;
+  --titleBoxColor: #0c2340;
 
-  /*--containerBgColor: white;*/
-  --containerBgColor: azure;
-  --containerMrgnBottom: 50px;
+  --containerBgColor: #ffffff;
+  --containerMrgnBottom: 48px;
 
-  --prodBoxAnchorColor: #1976d2;
+  --prodBoxAnchorColor: #1565c0;
+  --mutedColor: #64748b;
 
-  --cartItemCntColor: #616161;
-  --cartBtnsBgColor: #1976d2;
+  --cartItemCntColor: #1e293b;
+  --cartBtnsBgColor: #1565c0;
 
-  --checkoutColor: slateblue;
-  --itemsCntBrdr: solid 2px #1976d2;
-  --itemsCntColor: blue;
+  --checkoutColor: #ffffff;
+  --itemsCntBrdr: solid 2px #ffffff;
+  --itemsCntColor: #0c2340;
 
-  --btnsBgColor: #1976d2;
+  --btnsBgColor: #1565c0;
+  --btnsColor: #ffffff;
 
-  --itemCntBoxColor: #616161;
+  --itemCntBoxColor: #1e293b;
 
-  --modalBoxWrapperBgColor: lightblue;
-  --modalBoxShadow: 0px 0px 15px 3px lightcyan;
-  --modalBoxBrdr: solid 2px #1976d2;
+  --modalBoxWrapperBgColor: rgba(12, 35, 64, 0.48);
+  --modalBoxShadow: 0 18px 48px rgba(12, 35, 64, 0.28);
+  --modalBoxBrdr: solid 1px #d5e3f5;
 
-  --saleHdrBrdr: solid 1px lightSalmon;
-  --saleHdrBgColor: lightgoldenrodyellow;
-  --saleHdrColor: red;
+  --saleHdrBrdr: solid 1px #ffcdd2;
+  --saleHdrBgColor: #fff5f5;
+  --saleHdrColor: #c62828;
 
-  --bodyBgColor: #eeffff; /*azure*/
+  --bodyBgColor: #e8eef6;
 
-  --SlickSlidePColor: slateblue;
-  --slickDotsColor: #1976d2;
+  --SlickSlidePColor: #1565c0;
+  --slickDotsColor: #1565c0;
+  --slickDotsActiveColor: #0d47a1;
+  --slickArrowColor: #0c2340;
 
-  --modelImgBoxShadow: 0px 0px 75px slateblue;
+  --modelImgBoxShadow: 0 14px 42px rgba(21, 101, 192, 0.28);
   --promoImgFilter: grayscale(0%);
 
-  --appTopBarBgColor: #1976d2;
-
-  --btnScrollTopBgColor: #3288df;
+  --btnScrollTopBgColor: #143d6b;
+  --btnScrollTopColor: #ffffff;
+  --btnScrollTopBorder: rgba(255, 255, 255, 0.28);
+  --btnScrollTopShadow: 0 8px 20px rgba(12, 35, 64, 0.28);
 
   /*** mobile ***/
-  --menuItemBg: #3b2895;
-  --searchBoxBgColor: #451082;
+  --menuItemBg: #0c2340;
+  --searchBoxBgColor: #143d6b;
 
-  --contactContainerBgColor: skyblue;
+  --contactContainerBgColor: transparent;
 }
 
 .darkGrayTheme {
-  --globalColor: #3c3c3c;
+  /* Near-black surfaces + muted accents (not neon) */
+  --globalColor: #e6edf3;
 
-  /*--appTopBarBgImg: linear-gradient(#0d1323, 15%, #4c4f55);*/
-  --appTopBarBgImg: linear-gradient(#4b4e54, 20%, #6c7077);
-  --appTopBarBgImg: linear-gradient(#252526, 50%, #8c9096);
+  --appTopBarBgImg: linear-gradient(165deg, #0a0e14 0%, #121820 55%, #1a2332 100%);
+  --appTopBarBgColor: #0d1117;
+  --appMenuBgImg: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  --appBottomBarBgImg: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  --fancyButtonColor: #f0f3f6;
 
-  --appTopBarBgColor: #8c9096;
-  --appMenuBgImg: linear-gradient(#8c9096, #252526);
-  --appBottomBarBgImg: linear-gradient(#8c9096, 25%, #252526);
-  --fancyButtonColor: white;
+  --menuItemBrdrLeftColor: #8b949e;
+  --menuItemHoverBgImg: linear-gradient(180deg, #30363d 0%, #21262d 100%);
+  --menuItemHoverBrdrBottomColor: #8b949e;
+  --menuItemActiveBgImage: linear-gradient(180deg, #30363d 0%, #21262d 100%);
 
-  --menuItemBrdrLeftColor: darkslategrey;
+  --dotColor: #6e7681;
+  --dotActiveColor: #e6edf3;
 
-  --menuItemHoverBgImg: linear-gradient(grey, #8c9096);
-  --menuItemHoverBrdrBottomColor: lightgrey;
+  --pageTitleBrdrColor: transparent;
+  --pageTitleBgColor: #21262d;
+  --pageTitleColor: #e6edf3;
+  --prodBoxBgColor: #161b22;
+  --prodBoxBrdrColor: #30363d;
+  --prodBoxHoverBgColor: #1c2128;
+  --prodBoxShadowHover: 0 10px 28px rgba(0, 0, 0, 0.45);
 
-  --menuItemActiveBgImage: linear-gradient(grey, #8c9096);
+  --titleBoxBgColor: #21262d;
+  --titleBoxColor: #e6edf3;
 
-  --pageTitleBrdrColor: #8c9096;
-  --pageTitleBgColor: #8c9096;
-  --pageTitleColor: white;
-  --prodBoxBgColor: white;
-  --prodBoxBrdrColor: #60656d;
-  --prodBoxHoverBgColor: #eeecec;
-  --prodBoxShadowHover: 0px 0px 15px 3px #8c9096;
+  --containerBgColor: #161b22;
+  --containerMrgnBottom: 48px;
 
-  --titleBoxBgColor: #e9e9e9 !important;
+  --prodBoxAnchorColor: #79c0ff;
+  --mutedColor: #8b949e;
 
-  --containerBgColor: #e9e9e9;
-  --containerMrgnBottom: 50px;
+  --cartItemCntColor: #e6edf3;
+  --cartBtnsBgColor: transparent;
 
-  --prodBoxAnchorColor: #616161;
+  --checkoutColor: #f0f3f6;
+  --itemsCntBrdr: solid 2px #0d1117;
+  --itemsCntColor: #0d1117;
 
-  --cartItemCntColor: white;
-  --cartBtnsBgColor: #616161;
+  --btnsBgColor: #2563eb;
+  --btnsColor: #ffffff;
 
-  --checkoutColor: #616161;
-  --itemsCntBrdr: solid 2px #616161;
-  --itemsCntColor: #60656d;
+  --itemCntBoxColor: #e6edf3;
 
-  --btnsBgColor: darkslategrey;
-  --btnsColor: white;
+  --modalBoxWrapperBgColor: rgba(1, 4, 9, 0.72);
+  --modalBoxShadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+  --modalBoxBrdr: solid 1px #30363d;
 
-  --itemCntBoxColor: white;
+  --saleHdrBrdr: solid 1px #6e2a2a;
+  --saleHdrBgColor: #3d1515;
+  --saleHdrColor: #ff7b72;
+  --saleTagImgFilter: grayscale(0%);
 
-  --modalBoxWrapperBgColor: #8c9096;
-  --modalBoxShadow: 0px 0px 15px 3px lightgray;
-  --modalBoxBrdr: solid 2px #616161;
+  --bodyBgColor: #0d1117;
 
-  --saleHdrBrdr: solid 1px smokewhite;
-  --saleHdrBgColor: lightgray;
-  --saleHdrColor: darkred;
-  --saleTagImgFilter: grayscale(45%);
+  --SlickSlidePColor: #e6edf3;
+  --slickDotsColor: #6e7681;
+  --slickDotsActiveColor: #e6edf3;
+  --slickArrowColor: #c9d1d9;
 
-  --bodyBgColor: #e9e9e9;
+  --modelImgBoxShadow: 0 14px 42px rgba(0, 0, 0, 0.55);
+  --promoImgFilter: grayscale(0%) brightness(0.92);
 
-  --SlickSlidePColor: #616161;
-  --slickDotsColor: #616161;
-
-  --modelImgBoxShadow: 0px 15px 130px #616161;
-  --promoImgFilter: grayscale(35%);
-
-  --appTopBarBgColor: #3c3e43;
-
-  --btnScrollTopBgColor: #60656d;
+  --btnScrollTopBgColor: #21262d;
+  --btnScrollTopColor: #e6edf3;
+  --btnScrollTopBorder: #484f58;
+  --btnScrollTopShadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 
   /*** mobile ***/
-  --menuItemBg: #3c3e43;
-  --menuItem3rdChildMenuItemBgColor: darkred;
-  --searchBoxBgColor: #0e1424;
+  --menuItemBg: #161b22;
+  --menuItem3rdChildMenuItemBgColor: #da3633;
+  --searchBoxBgColor: #0d1117;
 
-  --contactContainerBgColor: #8c9096;
+  --contactContainerBgColor: #161b22;
 }
 
 body {
   background-color: var(--bodyBgColor);
+  color: var(--globalColor, #616161);
+}
+
+.darkGrayTheme ::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+.darkGrayTheme ::-webkit-scrollbar-thumb {
+  background: #30363d;
+}
+
+.darkGrayTheme input {
+  background: #0d1117;
+  border-color: #30363d;
+  color: #e6edf3;
+}
+
+.darkGrayTheme .addToCartBtn button,
+.darkGrayTheme .pageContainer > .button:not(.fancy-button),
+.darkGrayTheme .uploadBtn,
+.darkGrayTheme .tryProduct,
+.darkGrayTheme .clearImage,
+.darkGrayTheme .clearCartBtn,
+.darkGrayTheme .btn {
+  background-color: var(--btnsBgColor) !important;
+  color: var(--btnsColor) !important;
+  border: 1px solid transparent;
+  box-shadow: none;
+  filter: none;
+}
+
+.darkGrayTheme .addToCartBtn button:hover,
+.darkGrayTheme .uploadBtn:hover,
+.darkGrayTheme .tryProduct:hover,
+.darkGrayTheme .clearImage:hover,
+.darkGrayTheme .clearCartBtn:hover,
+.darkGrayTheme .btn:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.06);
+}
+
+.darkGrayTheme .menuContainer .active {
+  background-image: var(--menuItemActiveBgImage) !important;
+  border-bottom: 3px solid #e6edf3 !important;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+/* Dot buttons must never pick up primary blue fills */
+body.darkGrayTheme .slick-dots li button,
+body.darkGrayTheme .slick-dots li button:hover,
+body.darkGrayTheme .slick-dots li.slick-active button {
+  width: 10px !important;
+  height: 10px !important;
+  padding: 0 !important;
+  margin: 0 5px !important;
+  background: #6e7681 !important;
+  background-color: #6e7681 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  opacity: 0.55 !important;
+  color: transparent !important;
+}
+
+body.darkGrayTheme .slick-dots li.slick-active button {
+  background: #e6edf3 !important;
+  background-color: #e6edf3 !important;
+  opacity: 1 !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+
+body.darkGrayTheme .slick-dots li button:before,
+body.darkGrayTheme .slick-dots li.slick-active button:before {
+  display: none !important;
+  content: '' !important;
+  opacity: 0 !important;
+  color: transparent !important;
+}
+
+/* Match light-mode arrow chrome; dark palette via --slickArrowColor */
+body.darkGrayTheme .slick-prev,
+body.darkGrayTheme .slick-next,
+body.darkGrayTheme .banners .slick-prev,
+body.darkGrayTheme .banners .slick-next {
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+body.darkGrayTheme .slick-prev:hover,
+body.darkGrayTheme .slick-next:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+body.darkGrayTheme .slick-prev:before,
+body.darkGrayTheme .slick-next:before,
+body.darkGrayTheme .banners .slick-prev:before,
+body.darkGrayTheme .banners .slick-next:before {
+  color: var(--slickArrowColor, #c9d1d9) !important;
+  opacity: 0.75 !important;
+  font-size: 2.5vw !important;
+  line-height: 1 !important;
+  width: auto !important;
+}
+
+.darkGrayTheme .fancy-button,
+.darkGrayTheme a.fancy-button,
+.darkGrayTheme .cartBtn {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--fancyButtonColor) !important;
+  filter: none !important;
+}
+
+.darkGrayTheme .itemsCnt {
+  background-color: #e6edf3;
+  color: #0d1117 !important;
+}
+
+.darkGrayTheme .container {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.darkGrayTheme .bannerText,
+.darkGrayTheme .bannerText h1,
+.darkGrayTheme .bannerText h3,
+.darkGrayTheme .boxedText {
+  color: #f0f3f6 !important;
+}
+
+.darkGrayTheme .boxedText {
+  border-color: rgba(240, 243, 246, 0.75) !important;
+}
+
+.darkGrayTheme .brands .slick-slide a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #f6f8fa;
+}
+
+.darkGrayTheme .brands .slick-slide img {
+  filter: none;
+  max-height: 56px;
+}
+
+.darkGrayTheme .slogans .slick-slide,
+.darkGrayTheme .slogans .slick-slide:nth-child(2),
+.darkGrayTheme .slogans .slick-slide:nth-child(3) {
+  background: linear-gradient(120deg, #21262d 0%, #161b22 55%, #0d1117 100%) !important;
+  color: #e6edf3;
+}
+
+.darkGrayTheme .slogans .slick-slide h1,
+.darkGrayTheme .slogans .slick-slide p {
+  color: #e6edf3 !important;
+}
+
+.darkGrayTheme .sliderProducts .slick-current img {
+  box-shadow: 0 0 0 1px #30363d, 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 #btnScrollTop {
-  border: solid 1px azure;
   background-color: var(--btnScrollTopBgColor) !important;
-}
-
-.slick-dots li button:before {
-  color: var(--slickDotsColor) !important;
+  color: var(--btnScrollTopColor, #ffffff) !important;
+  border-color: var(--btnScrollTopBorder, transparent) !important;
+  box-shadow: var(--btnScrollTopShadow, 0 8px 20px rgba(0, 0, 0, 0.2));
 }
 
 .sliderProducts p {
@@ -483,9 +738,28 @@ body {
   background-image: var(--menuItemHoverBgImg) !important;
   border-bottom-color: var(--menuItemHoverBrdrBottomColor) !important;
 }
-.menuContainer .active,
-.dots .active {
+
+.menuContainer .active {
   background-image: var(--menuItemActiveBgImage) !important;
+  border-bottom-color: var(--menuItemHoverBrdrBottomColor) !important;
+  color: #ffffff !important;
+}
+
+.dot {
+  background-color: var(--dotColor, #90a4ae) !important;
+  background-image: none !important;
+}
+
+.dot.active,
+.dots .active,
+.imgBox .active {
+  background-color: var(--dotActiveColor, #1565c0) !important;
+  background-image: none !important;
+}
+
+.dot:hover {
+  background-color: var(--dotActiveColor, #1565c0) !important;
+  opacity: 0.85;
 }
 
 .pageTitle {
@@ -503,7 +777,15 @@ body {
 }
 
 .titleBox h2 {
-  background-color: var(--titleBoxBgColor) !important;
+  background: radial-gradient(
+    ellipse 72% 95% at 50% 50%,
+    var(--titleBoxBgColor, #edf2f8) 0%,
+    var(--titleBoxBgColor, #edf2f8) 42%,
+    transparent 78%
+  ) !important;
+  background-color: transparent !important;
+  color: var(--titleBoxColor, #0c2340) !important;
+  width: 100%;
 }
 
 .prodBox {
@@ -597,15 +879,29 @@ app-product-details button,
 }
 
 .ms-options {
-  border: solid 0px black;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5) !important;
   max-height: 250px !important;
   margin-top: 5px;
   overflow: unset !important;
   overflow-x: visible !important;
+  background: var(--prodBoxBgColor, #ffffff) !important;
+  color: var(--globalColor, #1e293b) !important;
+  box-shadow: var(--prodBoxShadowHover, 0 8px 20px rgba(12, 35, 64, 0.12));
+}
+
+.ms-options-wrap > button {
+  background: var(--prodBoxBgColor, #ffffff) !important;
+  color: var(--globalColor, #1e293b) !important;
+  border: 1px solid var(--prodBoxBrdrColor, #d5e3f5) !important;
+}
+
+.ms-options-wrap > button:hover {
+  background: var(--prodBoxHoverBgColor, #f4f8fd) !important;
 }
 
 .ms-options ul li label {
   margin-bottom: 0px;
+  color: var(--globalColor, #1e293b) !important;
 }
 
 .ms-options ul {
@@ -620,6 +916,15 @@ app-product-details button,
 
 .ms-options input[type='checkbox'] {
   vertical-align: middle;
+}
+
+.ms-options ul li {
+  color: var(--globalColor, #1e293b);
+}
+
+.ms-options ul li:hover,
+.ms-options ul li.selected {
+  background: var(--prodBoxHoverBgColor, #f4f8fd) !important;
 }
 
 .ms-options ul li {
@@ -662,8 +967,9 @@ app-top-bar,
   align-items: center;
   width: 100%;
   height: 130px;
-
+  background-color: var(--appTopBarBgColor);
   background-image: var(--appTopBarBgImg);
+  box-shadow: 0 4px 18px rgba(12, 35, 64, 0.22);
 }
 
 /* Menu */
@@ -674,8 +980,9 @@ app-menu,
   padding: 0 20px 0 20px;
   width: 100%;
   height: 3em;
-
+  background-color: var(--appTopBarBgColor);
   background-image: var(--appMenuBgImg);
+  box-shadow: 0 2px 10px rgba(12, 35, 64, 0.12);
 }
 
 /* Bottom Bar*/
@@ -688,7 +995,7 @@ app-bottom-bar,
   align-items: center;
   width: 100%;
   min-height: 210px;
-
+  background-color: var(--appTopBarBgColor);
   background-image: var(--appBottomBarBgImg);
 }
 
@@ -756,7 +1063,7 @@ app-product-list {
   }
 
   .menuItem {
-    background: #3b2895;
+    background: var(--menuItemBg, #0c2340);
   }
 
   .menuContainer div:nth-child(3) .menuItem {

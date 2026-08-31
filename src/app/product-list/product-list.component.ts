@@ -7,13 +7,17 @@ import { menuItems } from "../menu-items";
 import { CountdownConfig } from 'ngx-countdown';
 
 @Component({
+  standalone: false,
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
   brands;
+  filterBrands = [];
+  filterShapes = ['Oval', 'Rectangle', 'Round', 'Square'];
   products;
+  private baseProducts = [];
   subTitle: string = '';
   prodType: string;
   promo: string;
@@ -23,6 +27,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   isTitleLinkEnabled: boolean;
   slideIndex = 1;
   gender: any;
+  isGenderLockedFromUrl = false;
+  urlGenderValues: string[] = [];
   todayDate: Date;
   pageBanner;
 
@@ -52,6 +58,12 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     //console.log('ngOnInit() start');
     this.brands = brands;
+    this.filterBrands = [...brands]
+      .filter((brand) => brand?.name)
+      .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+    this.filterShapes = [...this.filterShapes].sort((a, b) =>
+      a.localeCompare(b, undefined, { sensitivity: 'base' }),
+    );
     this.products = products;
     this.todayDate = new Date();
     
@@ -66,33 +78,147 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     })
 
     this.fetchData();
+    this.baseProducts = [...this.products];
+    this.filterBrands = [...this.brands]
+      .filter((brand) => brand?.name)
+      .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 
     this.menuItems.forEach((menu) => {
       //this.pageBanner = menu.subItems[0].banner;
       this.pageBanner = menu.banner;
       //console.log('banner init Link: ' + menu.banner);
       //console.log('banner sub Link: ' + menu.subItems[0].banner);
-    });    
-
-    var searchFiltersBox = document.getElementsByClassName("searchFiltersBox");
-    //(click)="ApplyFilter(this)
-    if(searchFiltersBox != null) {
-      //console.log('inputs.len: ' + inputs.length);
-      var options = searchFiltersBox[0].getElementsByTagName("input");
-      console.log('options: ' + options[0]);
-      if(options != null) {
-        for(var i=0; i<options.length; i++) {
-          console.log('options[i].value: ' + options[i].value);
-          options[i].onclick = (ev) => {this.ApplyFilter('')}; 
-        }
-      }
-    }
+    });
   }
 
   ngAfterViewInit(): void {
-    for(var i=0 ; i<this.products.length; i++) {
-      this.showSlides(this.slideIndex, this.products[i].id);
-    }    
+    this.prepopulateFiltersFromRoute();
+    this.refreshSlides();
+  }
+
+  applyFilters() {
+    const genders = this.getSelectedValues('genderSelect');
+    const selectedBrands = this.getSelectedValues('brandSelect');
+    const shapes = this.getSelectedValues('shapeSelect');
+
+    this.products = this.baseProducts.filter((product) => {
+      if (genders.length > 0 && !this.matchesGender(product, genders)) {
+        return false;
+      }
+      if (selectedBrands.length > 0 && !this.matchesBrand(product, selectedBrands)) {
+        return false;
+      }
+      if (shapes.length > 0 && !this.matchesShape(product, shapes)) {
+        return false;
+      }
+      return true;
+    });
+
+    setTimeout(() => this.refreshSlides());
+  }
+
+  toggleFilterOption(event: MouseEvent) {
+    const option = event.target as HTMLOptionElement;
+    if (!option || option.tagName !== 'OPTION') return;
+
+    const select = option.parentElement as HTMLSelectElement | null;
+    if (
+      select?.id === 'genderSelect' &&
+      this.isGenderLockedFromUrl
+    ) {
+      event.preventDefault();
+      return;
+    }
+
+    event.preventDefault();
+    option.selected = !option.selected;
+    this.applyFilters();
+  }
+
+  isUrlGenderSelected(value: string): boolean {
+    return this.urlGenderValues.includes(String(value).toUpperCase());
+  }
+
+  private prepopulateFiltersFromRoute() {
+    const routeGender =
+      this.route.snapshot.paramMap.get('gender') ||
+      this.route.snapshot.params.gender ||
+      this.gender;
+
+    if (routeGender) {
+      this.urlGenderValues = String(routeGender)
+        .split(',')
+        .map((value) => value.trim().toUpperCase())
+        .filter(Boolean);
+
+      // Select first so the option paints as chosen, then lock.
+      this.isGenderLockedFromUrl = false;
+      this.setSelectedValues('genderSelect', this.urlGenderValues);
+      this.isGenderLockedFromUrl = true;
+    } else {
+      this.urlGenderValues = [];
+      this.isGenderLockedFromUrl = false;
+    }
+
+    const routeBrand =
+      this.route.snapshot.paramMap.get('brand') ||
+      this.route.snapshot.params.brand ||
+      this.brand;
+
+    if (routeBrand) {
+      this.setSelectedValues('brandSelect', [String(routeBrand)]);
+    }
+  }
+
+  private setSelectedValues(selectId: string, values: string[]) {
+    const select = document.getElementById(selectId) as HTMLSelectElement | null;
+    if (!select || !values?.length) return;
+
+    const normalized = values.map((value) => value.toLowerCase());
+    Array.from(select.options).forEach((option) => {
+      option.selected = normalized.some(
+        (value) =>
+          option.value.toLowerCase() === value ||
+          option.value.toLowerCase().includes(value) ||
+          value.includes(option.value.toLowerCase()),
+      );
+    });
+  }
+
+  private getSelectedValues(selectId: string): string[] {
+    const select = document.getElementById(selectId) as HTMLSelectElement | null;
+    if (!select) return [];
+    return Array.from(select.selectedOptions).map((option) => option.value);
+  }
+
+  private matchesGender(product, genders: string[]): boolean {
+    if (!product?.specs) return false;
+    return product.specs.some(
+      (spec) =>
+        spec.name?.toLowerCase() === 'gender' &&
+        genders.some((gender) => String(spec.value || '').includes(gender)),
+    );
+  }
+
+  private matchesBrand(product, selectedBrands: string[]): boolean {
+    const brand = String(product?.brand || '').toLowerCase();
+    if (!brand) return false;
+    return selectedBrands.some((selected) => brand.includes(selected.toLowerCase()));
+  }
+
+  private matchesShape(product, shapes: string[]): boolean {
+    if (!product?.specs) return false;
+    return product.specs.some((spec) => {
+      if (spec.name?.toLowerCase() !== 'shape') return false;
+      const value = String(spec.value || '').toLowerCase();
+      return shapes.some((shape) => value === shape.toLowerCase());
+    });
+  }
+
+  private refreshSlides() {
+    for (var i = 0; i < this.products.length; i++) {
+      this.showSlides(1, this.products[i].id);
+    }
   }
 
   plusSlides(n, prodId) {
@@ -169,8 +295,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     }    
   }
 
-  ApplyFilter(filter) {
-    console.log('filter.value: ' + filter.value);
+  ApplyFilter(_filter) {
+    this.applyFilters();
   }
 
   fetchData() {

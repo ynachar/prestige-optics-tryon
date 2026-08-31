@@ -1,6 +1,8 @@
 import { Attribute, Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
-@Directive({ selector: '[appImgLazy]' })
+@Directive({
+  standalone: false,
+  selector: '[appImgLazy]' })
 export class LazyImgDirective {
   constructor(
     @Attribute('loader') public loader: string,

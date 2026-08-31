@@ -16,6 +16,7 @@ import bottomBarComponentHtml from '../bottom-bar/bottom-bar.component.html';
 import { Subject } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'app-request-showing',
   templateUrl: './request-showing.component.html',
   styleUrls: ['./request-showing.component.css']
@@ -91,7 +92,7 @@ export class RequestShowingComponent implements OnInit {
     catch (e) {
       console.log('exception: ' + e);
       this.modalBox.close();
-      this.modalBox.open(e, false);
+      this.modalBox.open(e, false, false);
     }
   }
 
@@ -228,14 +229,15 @@ export class RequestShowingComponent implements OnInit {
       \t\t\t\t\t<div class="pageTitle"><h2>Contact</h2></div> 
       \t\t\t\t\t<div class="contactInfo"> `;
     
-    this.contact.contactInfo.forEach(conInfo => {
-      //console.log(conInfo.contactType + ': ' + conInfo.contactValue);
-      body += `
+    this.contact.contactInfo.forEach((conInfo: any) => {
+      (conInfo.location || [conInfo]).forEach((entry: any) => {
+        body += `
       \t\t\t\t\t\t<div>
-      \t\t\t\t\t\t\t<div class="contactType"> ${conInfo.contactType}: </div>
-      \t\t\t\t\t\t\t<div class="contactValue"> ${conInfo.contactValue} </div>
+      \t\t\t\t\t\t\t<div class="contactType"> ${entry.contactType}: </div>
+      \t\t\t\t\t\t\t<div class="contactValue"> ${entry.contactValue} </div>
       \t\t\t\t\t\t</div>
       `;
+      });
     })
 
     body +=`

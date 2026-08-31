@@ -12,14 +12,20 @@
     <h4 class="saleHeader" *ngIf="product.promo != undefined">
       On Sale: {{ product.promo }} % Off
     </h4>
-    <h4 [ngClass]="{ crossedLine: product.promo != undefined }">
-      {{ product.price | currency }}
-    </h4>
-    <h4 *ngIf="product.promo != undefined" class="salePrice">
-      {{ (product.price * (100 - product.promo)) / 100 | currency }}
-    </h4>
+    <div class="priceBox">
+      <h4 [ngClass]="{ crossedLine: product.promo != undefined }">
+        {{ product.price | currency }}
+      </h4>
+      <h4 *ngIf="product.promo != undefined" class="salePrice">
+        {{ (product.price * (100 - product.promo)) / 100 | currency }}
+      </h4>
+    </div>
     <h5>{{ product.detail }}</h5>
-    <br /><br />
+  </div>
+  <div class="addToCartBtn" *ngIf="product">
+    <button type="button" (click)="addToCart(product)">
+      {{ 'Add to Cart' | translate }}
+    </button>
   </div>
   <div class="specsBox">
     <div *ngFor="let spec of product.specs">
@@ -60,12 +66,6 @@
   <div *ngIf="product" class="prodDetails prodDetailsMobile">
     <h4>{{ 'Description:' | translate }}</h4>
     <p>{{ product.description }}</p>
-  </div>
-  <div class="addToCartBtn">
-    <button (click)="addToCart(product)">
-      {{ 'Add to Cart' | translate }}
-    </button>
-    <br /><br />
   </div>
   <div
     *ngIf="!product.type.includes('S') && !product.type.includes('P')"

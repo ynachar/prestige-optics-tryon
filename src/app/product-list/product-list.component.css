@@ -1,15 +1,27 @@
 .pageContainer {
   border: solid 0px blue;
-  width: 100%;  
+  width: 100%;
+  color: var(--globalColor, #1e293b);
 }
 
 .brandBannerBox {
-  border: solid 1px lightcyan;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
   position: relative;
   display: block;
   float: left;
   width: 100%;
   overflow: visible;
+  color: var(--globalColor, #1e293b);
+  background-color: var(--prodBoxBgColor, transparent);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.brandBannerBox h3,
+.brandBannerBox p {
+  color: var(--globalColor, #1e293b);
+  padding: 0 12px;
 }
 
 .brandBannerBox img {
@@ -17,12 +29,13 @@
 }
 
 .bannerBox {
-  border: solid 1px lightcyan;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
   position: relative;
   display: block;
   float: left;
   width: 100%;
   overflow: visible;
+  border-radius: 8px;
 }
 
 .bannerBox img {
@@ -40,18 +53,19 @@
 }
 
 .pageTitle {
-  border: solid 1px lightcyan;
+  border: solid 1px var(--pageTitleBrdrColor, transparent);
   position: relative;
   display: block;
   float: left;
-  background-color: lightblue;
+  background-color: var(--pageTitleBgColor, #e8f1fb);
   width: 100%;
   height: 60px;
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 5px;
-  
   font-weight: bold;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .pageTitle h4 {
@@ -63,6 +77,11 @@
   font-weight: normal;
   margin-top: 18px;
   margin-bottom: 18px;
+  color: var(--pageTitleColor, #0c2340);
+}
+
+.pageTitle h4 a {
+  color: var(--pageTitleColor, #0c2340);
 }
 
 .itemCntBox {
@@ -72,7 +91,11 @@
   float: right;
   width: 20%;
   height: 57px;
-  text-align: right;  
+  text-align: right;
+}
+
+.itemCntBox h5 {
+  color: var(--itemCntBoxColor, var(--pageTitleColor, #0c2340));
 }
 
 .searchFilterIcon {
@@ -92,6 +115,13 @@
   width: 100%;
   height: 100%;
   z-index: 500;
+  color: var(--pageTitleColor, #0c2340) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.filterBtn .material-icons {
+  color: var(--pageTitleColor, #0c2340) !important;
 }
 
 .filterIconFlip {
@@ -100,53 +130,177 @@
 }
 
 .filterBtn:hover {
-  background-color: skyblue;
+  background-color: var(--prodBoxHoverBgColor, rgba(21, 101, 192, 0.12)) !important;
+  opacity: 1;
 }
 
 .searchFiltersBox {
-  border: dotted 1px lightblue;
-  position: relative;  
-  display: block;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px;
   float: left;
-  background-color: lightcyan;
-  width: calc(100% - 2px);
-  max-height: 0px;
-  padding: 5px;
-  margin: 1px;
-  margin-top: -7px;
-  margin-bottom: 7px;
-  visibility: collapse;
+  clear: both;
+  background-color: var(--prodBoxBgColor, #ffffff);
+  color: var(--globalColor, #1e293b);
+  width: 100%;
+  max-height: 0;
+  padding: 0;
+  margin: 0 0 8px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition:
+    max-height 0.3s ease,
+    padding 0.2s ease,
+    opacity 0.2s ease,
+    visibility 0.2s ease;
 }
 
 .expandFilters {
   visibility: visible;
-  max-height: 500px;
-  transition: max-height 1s, visibility 3s;
+  max-height: 160px;
+  padding: 10px 12px;
+  opacity: 1;
+  overflow: visible;
 }
 
 .filterBox {
-  position: relative;  
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 140px;
+  min-width: 120px;
+  max-width: 100%;
+  float: none;
+  padding: 0;
+  color: var(--globalColor, #1e293b);
+  box-sizing: border-box;
+}
+
+.filterLabel {
   display: block;
-  float: left;
-  width: 23%;
-  padding: 10px;
+  margin: 0 0 4px;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mutedColor, #64748b);
+}
+
+.filterSelect,
+.filterBox select {
+  display: block;
+  width: 100%;
+  min-height: 72px;
+  margin: 0;
+  padding: 4px 6px;
+  border: 1px solid var(--prodBoxBrdrColor, #d5e3f5);
+  border-radius: 8px;
+  background-color: var(--prodBoxHoverBgColor, #f4f8fd);
+  color: var(--globalColor, #1e293b);
+  font-size: 13px;
+  line-height: 1.35;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.filterSelect:focus,
+.filterBox select:focus {
+  border-color: var(--prodBoxAnchorColor, #1565c0);
+  box-shadow: 0 0 0 2px rgba(21, 101, 192, 0.12);
+}
+
+.filterSelect option,
+.filterBox select option {
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin: 1px 0;
+  color: var(--globalColor, #1e293b);
+  background-color: transparent;
+}
+
+.filterSelect option:checked,
+.filterBox select option:checked,
+.filterSelect option.filterOptionSelected,
+.filterBox select option.filterOptionSelected {
+  background: linear-gradient(
+    0deg,
+    var(--prodBoxAnchorColor, #1565c0),
+    var(--prodBoxAnchorColor, #1565c0)
+  );
+  color: #ffffff;
+}
+
+.filterBoxDisabled {
+  opacity: 0.85;
+}
+
+.filterBoxDisabled .filterSelect,
+.filterBoxDisabled select {
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: var(--prodBoxBgColor, #edf2f8);
+}
+
+.filterBoxDisabled .filterSelect option.filterOptionSelected,
+.filterBoxDisabled select option.filterOptionSelected,
+.filterBoxDisabled .filterSelect option:checked,
+.filterBoxDisabled select option:checked {
+  background: linear-gradient(
+    0deg,
+    var(--prodBoxAnchorColor, #1565c0),
+    var(--prodBoxAnchorColor, #1565c0)
+  ) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.filterBox .ms-options-wrap,
+.filterBox .ms-options-wrap > button {
+  width: 100% !important;
+}
+
+.filterBox .ms-options-wrap > button {
+  min-height: 36px;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--prodBoxBrdrColor, #d5e3f5) !important;
+  background: var(--prodBoxHoverBgColor, #f4f8fd) !important;
+  color: var(--globalColor, #1e293b) !important;
+  text-align: left;
+  font-size: 13px;
+}
+
+.filterBox .ms-options {
+  border-radius: 8px !important;
+  border: 1px solid var(--prodBoxBrdrColor, #d5e3f5) !important;
+  background: var(--prodBoxBgColor, #ffffff) !important;
+  box-shadow: var(--prodBoxShadowHover, 0 8px 20px rgba(12, 35, 64, 0.12)) !important;
 }
 
 .prodBoxContainer {
   border: solid 0px black;
   position: relative;
-  display: block; 
+  display: block;
   float: left;
-
-  /*height: 500px;*/
   width: 100%;
   margin: 0 auto;
 }
 
 .searchItemsEmpty {
-  border: solid 1px lightgray;
-  background-color: lightcyan;
-  color: black;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
+  background-color: var(--prodBoxBgColor, #ffffff);
+  color: var(--globalColor, #1e293b);
   position: relative;
   display: block;
   float: left;
@@ -154,29 +308,31 @@
   height: 50px;
   padding: 12px;
   margin: 5px 0px 5px 0px;
-  border-radius: 2px;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .prodBox {
-  /*border: solid 1px lightskyblue; */
-  border: solid 0px transparent;
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
   position: relative;
-  display: block; 
+  display: block;
   float: left;
-  
-  border-radius: 3px;
-  box-sizing: content-box; 
-  background-color: lightcyan;  
-  
+  border-radius: 8px;
+  box-sizing: content-box;
+  background-color: var(--prodBoxBgColor, #ffffff);
+  color: var(--globalColor, #1e293b);
   padding: 5px 8px 5px 8px;
-  margin: 5px; 
+  margin: 5px;
   min-height: 20em;
   width: 30%;
   min-width: 210px;
-  /*min-height: 330px;*/
-
   text-align: center;
   z-index: 300;
+}
+
+.prodBox h3,
+.prodBox h5 {
+  color: var(--globalColor, #1e293b);
 }
 
 .prodBox h3 {
@@ -185,8 +341,27 @@
 }
 
 .prodBox h5 {
-  margin: 0px;  
+  margin: 0px;
   width: 100%;
+}
+
+.prodBox p,
+.prodDetLink p {
+  color: var(--mutedColor, #64748b);
+}
+
+.prodDetLink {
+  border: solid 0px blue;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  min-height: 155px;
+  color: var(--globalColor, #1e293b);
+}
+
+.prodDetLink:hover {
+  opacity: 1;
 }
 
 .SaleImgBox {
@@ -203,7 +378,7 @@
 }
 
 .saleExpiryDateBox span {
-  color: red !important;
+  color: var(--saleHdrColor, #c62828) !important;
   font-weight: bold;
 }
 
@@ -212,7 +387,7 @@
   top: -6px;
   right: -6px;
   width: 90px;
-  z-index: 10;   
+  z-index: 10;
 }
 
 .saleAmountLabel {
@@ -235,21 +410,41 @@
 .priceBox {
   border: solid 0px black;
   position: relative;
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5em;
   float: left;
   width: 100%;
   padding: 5px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.priceBox h5 {
+  display: inline;
+  width: auto !important;
+  margin: 0;
+  white-space: nowrap;
+  color: var(--globalColor, #1e293b);
+}
+
+.priceBox .salePrice {
+  color: var(--saleHdrColor, #c62828);
 }
 
 .imgBox {
   position: relative;
   display: block;
-  background-color: #f5f5f5;
-  min-width: 93%;   
+  background-color: var(--prodBoxHoverBgColor, #f5f5f5);
+  border: 1px solid var(--prodBoxBrdrColor, transparent);
+  min-width: 93%;
   min-height: 160px;
   height: auto;
   margin: 5px 0px 10px 0px;
-  border-radius: 2px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 #imgProduct {
@@ -257,8 +452,7 @@
   display: inline-block;
   width: 90%;
   margin: auto;
-  max-height: 155px;  
-
+  max-height: 155px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -267,35 +461,24 @@
 }
 
 .prodBox:hover {
-  /*border: solid 1px #1976d2; */
-  border: solid 0px transparent;
-  /*background-color: azure;*/  
-  
-  /*transform: scale(1.03);*/
+  border: solid 1px var(--prodBoxBrdrColor, #d5e3f5);
+  background-color: var(--prodBoxHoverBgColor, #f4f8fd);
   transition: all 0.3s ease-in-out;
-  box-shadow: 0px 0px 15px 3px lightslategray;
+  box-shadow: var(--prodBoxShadowHover, 0 10px 28px rgba(12, 35, 64, 0.12));
   z-index: 1;
 }
 
-.prodDetLink {
-  border: solid 0px blue;
+.button,
+button {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 100%;
-  height: 100%;
-  min-height: 155px;
-}
-
-.button, button {
-  position: relative;
-  display: block;  
-  width: 100%;   
 }
 
 .buttons {
   border: solid 0px black;
   position: absolute;
-  width: 90%;  
+  width: 90%;
   bottom: 15px;
 }
 
@@ -314,9 +497,9 @@
 }
 
 @media screen and (min-width: 1050px) {
- .bannerText {
-    font-size: 26px;    
-  }  
+  .bannerText {
+    font-size: 26px;
+  }
 }
 
 @media screen and (max-width: 830px) {
@@ -328,7 +511,7 @@
 
   .prodBox {
     padding: 5px 11px 5px 11px;
-    width: 45%;    
+    width: 45%;
   }
 }
 
@@ -341,19 +524,19 @@
 
   .prodBox {
     padding: 5px 11px 5px 11px;
-    width: 43%;    
+    width: 43%;
   }
 }
 
 @media screen and (max-width: 560px) {
-  .pageContainer {    
+  .pageContainer {
     position: relative;
     display: block;
     margin-bottom: 35%;
   }
 
   .bannerText {
-    font-size: 12px;    
+    font-size: 12px;
   }
 
   .prodBoxContainer {
@@ -362,15 +545,11 @@
     width: 97%;
   }
 
-  .prodBox {    
+  .prodBox {
     margin: 10px auto;
     min-width: 230px;
     width: 93%;
   }
-}
-
-@media screen and (max-width: 430px) {
-
 }
 
 @media screen and (max-width: 385px) {
@@ -383,19 +562,21 @@
   }
 }
 
-@media screen and (max-width: 330px) {
-  
+/*************************************************
+  sliders
+  ************************************************/
+
+* {
+  box-sizing: border-box;
 }
 
+.mySlides {
+  display: none;
+}
 
-/*************************************************
-  sliders 
-  ************************************************/
-  
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
+img {
+  vertical-align: middle;
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -405,7 +586,8 @@ img {vertical-align: middle;}
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 33%;
@@ -427,16 +609,17 @@ img {vertical-align: middle;}
 }
 
 .prev {
-  left: 0;  
+  left: 0;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .prevnexthover {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Caption text */
@@ -459,12 +642,12 @@ img {vertical-align: middle;}
   top: 0;
 }
 
-.dots {  
+.dots {
   border: solid 0px black;
   position: absolute;
   text-align: center;
-  bottom: 5px;
-  width: 100%;  
+  bottom: 18px;
+  width: 100%;
 }
 
 /* The dots/bullets/indicators */
@@ -475,14 +658,14 @@ img {vertical-align: middle;}
   height: 15px;
   width: 15px;
   margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;  
+  background-color: var(--dotColor, #bbb);
+  border-radius: 50%;
   transition: background-color 0.6s ease;
 }
 
-/*.active, */
-.dot:hover {
-  background-color: #717171;
+.dot:hover,
+.dot.active {
+  background-color: var(--dotActiveColor, #717171);
 }
 
 /* Fading animation */
@@ -494,16 +677,28 @@ img {vertical-align: middle;}
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
 }

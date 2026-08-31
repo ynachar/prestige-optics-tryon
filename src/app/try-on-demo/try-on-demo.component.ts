@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { products } from '../products';
 
 @Component({
+  standalone: false,
   selector: 'app-try-on-demo',
   templateUrl: './try-on-demo.component.html',
   styleUrls: ['./try-on-demo.component.css']
