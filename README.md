@@ -4,11 +4,14 @@ Angular storefront demo with MediaPipe iris-based virtual try-on.
 
 ## Open in StackBlitz
 
-1. Sign in to [StackBlitz](https://stackblitz.com) (GitHub account `ynachar`).
-2. Open:
+1. Open:
 
    https://stackblitz.com/github/ynachar/prestige-optics-tryon
 
+2. Wait for `npm install` + `ng serve` (preview on port **4200**).
+   If the preview hangs on “Booting WebContainer”, refresh once or open the **Ports** panel and select **4200**.
+
+Sign-in with GitHub account `ynachar` is optional for this public repo.
 ## Cursor → StackBlitz workflow
 
 ```bash
