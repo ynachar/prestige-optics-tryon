@@ -1,0 +1,45 @@
+<div class="app-bottom-bar" style="background-color: #1976d2;">
+  <div class="footerContainer">
+    <div class="logoCopyrightsBox">
+      <h3>Prestige Optics</h3>
+      <div class="smallFont">
+        &copy; {{ currentYear }} Prestige Optics. {{"AllRightsReserved" | translate}}.
+      </div>      
+    </div>
+    <!--
+    <div *ngFor="let contact of contactInfo | slice:0:1; let l = index;" class="contactInfoBox">
+      <div *ngFor="let contDet of contact.location; let i = index;" class="contactInfo">
+        <div *ngIf="contact.location[i].contactType != ''" class="contactType">
+          <i class="material-icons" *ngIf="contact.location[i].contactType == 'Address'">business</i>
+          <a *ngIf="contact.location[i].contactType == 'Email'" href="mailto:{{contact.location[i].contactValue}}">
+            <i class="material-icons">email</i>
+          </a>
+          <a *ngIf="contact.location[i].contactType == 'Phone Number'" href="tel:{{contact.location[i].contactValue}}">
+            <i class="material-icons">phone</i>
+          </a>
+        </div>
+        <div *ngIf="contact.location[i].contactType == 'Address'" class="contactValue">
+          {{contact.location[i].contactValue}}
+        </div>          
+      </div>
+    </div>
+    -->
+    <div class="menuFooterContainer">
+      <!-- 
+        *ngIf="menuItem.name != ''" [ngClass]="{'menuItem': true, 'menuItemSubs': menuItem.subItems.length >= 1 }" 
+      -->
+      <ul *ngFor="let menuItem of menuItems | slice:1">
+        <a routerLink="{{menuItem.link}}">{{menuItem.name | translate}}</a>
+        <li *ngFor="let subMenuItem of menuItem.subItems">
+          <a (click)="goToUrl(['/product-list/' + subMenuItem.param])">{{subMenuItem.name | translate}}</a>
+        </li>
+      </ul>
+    </div>
+    <a id="btnScrollTop" class="scrollTop" (click)="scrolToTop()">
+      <div>&#x2227;</div>
+    </a>
+  </div>
+  <div class="ownerBox">
+    <h5>Created &nbsp;& Designed by </h5><h5>Younes Nachar</h5>
+  </div>
+</div>

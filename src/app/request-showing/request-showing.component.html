@@ -1,0 +1,53 @@
+<div class="pageContainer">
+  <div class="pageTitle"><h2>Request Showing</h2></div>
+  <h3>Contact Info</h3>
+  <form id="contactForm" [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)" style="display: block">
+    <div class="formBox">    
+      <div class="formField50Left">
+        <input id="tbFirstName" type="text" placeholder="FIRST NAME*" formControlName="firstName" />      
+      </div>
+      <div class="formField50Right">
+        <input id="tbLastName" type="text" placeholder="LAST NAME*" formControlName="lastName" />
+      </div>
+      <div class="formField60Left">
+        <input id="tbEmailAddress" type="text" placeholder="EMAIL*" formControlName="emailAddress" />
+      </div>
+      <div class="formField40Right">
+        <input id="tbPhoneNumber" type="text" placeholder="PHONE*" formControlName="phoneNumber" />
+      </div>
+      <div class="dateTimePicker">
+        <input id="dateTimePicker" type="date" placeholder="Select Date ... *" formControlName="date" />
+      </div>
+      <div class="formFieldFull">
+        <textarea id="tbComment" type="text" rows="6" 
+        placeholder="ENTER ANY ADDITIONAL DETAIL OR REQUEST HERE" formControlName="comment"></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="Contact form submitted">
+      <input type="hidden" name="123_after" value="/">
+      <input type="hidden" name="123_confirmation" value="Success">
+    </div>
+    <div *ngIf="items.length > -1" class="cartSummary">
+      <div class="cartSummaryHdr">Cart Summary</div>
+      <div class="cartSummaryCntBox">
+        <div class="cartTotalText">Items in the basket: </div>
+        <div class="cartTotalAmount">{{itemsCnt}}</div>
+      </div>
+      <div class="cartSummaryBox">
+        <div class="cartTotalText">Cart Total</div>
+        <div class="cartTotalAmount">{{cartTotal | currency}}</div>
+      </div>    
+    </div>  
+    <div class="controlBtns">
+      <button *ngIf="items.length > -1" [disabled]="!formData.valid">Submit Request</button>
+    </div>  
+  </form>
+  <div id="formSubmissionMessage" style="display: none;">
+    <div class="successMessage">
+      Success. You should be getting an email shortly with details about your showing request selection.
+    </div>
+    <div class="controlBtns">
+      <div class="btn" [routerLink]="['/']">Back to Home page</div>
+      <div class="btn" [routerLink]="['/product-list']">Browse more products</div>
+    </div>
+  </div>
+</div>

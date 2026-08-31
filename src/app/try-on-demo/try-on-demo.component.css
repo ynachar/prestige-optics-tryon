@@ -1,0 +1,250 @@
+
+.pageContainer {
+  width: 100%;  
+}
+
+.pageTitle {
+  border: solid 1px lightcyan;
+  position: relative;
+  display: none;
+  background-color: lightblue;
+  width: 100%;
+  padding-left: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.titleBox {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;  
+}
+
+.titleBox h2{ 
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.titleBox p{
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.tryOnBox {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.modelImgContainer {
+  border: dotted 0px black;
+  position: relative;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.modelImg {
+  border: solid 1px lightcyan;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 500px;
+  margin-top: 10px;
+  border-radius: 50%;
+  transition: box-shadow 0.9s ease-in-out;
+  box-shadow: 0px 15px 130px slateblue;  
+}
+
+.modelImg:hover {
+  box-shadow: 0px 15px 130px slateblue;  
+}
+
+.productPreviewBox {
+  position: absolute;
+  float: left;
+  top: 52%;
+  left: 34.4%;
+  z-index: 1;
+  height: 80%;
+  margin: 12% auto;
+  overflow: visible;
+}
+
+.productPreviewBox img{
+  max-height: 95px;  
+}
+
+/*** slider start ***/
+.slider {
+    border: solid 0px black;
+    width: 34%;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0.3;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.tryOnExplanationBox {
+  border: dotted 0px blue;
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;  
+  height: 160px;
+  background-color: #badcf7;
+  text-transform: uppercase;
+  margin: 15px 0 30px 0;
+}
+
+.tryOnExplanation {
+  /*
+  border-left: solid 1px white;
+  border-right: solid 1px white;
+  */
+  position: relative;
+  display: block;
+  float: left;
+  width: 33.3%;
+  height: 100%;
+  padding: 10px;
+}
+
+.borderRight {
+  border-right: solid 3px whitesmoke;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  right: 0;
+  margin-bottom: 70px;;
+  transform: rotate(90deg)
+}
+
+.tryOnExplanation span{
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 55px;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  margin: 0 auto;
+  width: 15px;
+}
+
+.tryOnExplanation p {
+  border: solid 0px yellow;
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 24px;
+  text-shadow: 3px 5px 10px whitesmoke;
+  margin: 0 auto;
+  width: 190px;
+  padding: 0px;
+  text-align: center;
+  /*
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  */
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+/***************************************/
+@media screen and (max-width: 725px) {
+  .modelImgContainer {
+    width: 93%;
+  }
+
+  .kidsContainer {
+    margin-left: 10%;
+  }
+
+  .kidsContainer span {
+    font-size: 40px;
+  }
+
+  .productPreviewBox .slick-slide {
+    margin-top: 2%;
+  }
+
+  .tryOnExplanationBox {
+    float: left;    
+    height: unset;
+    width: 100%;
+    margin: 5% 0 5% 0;
+  }
+
+  .tryOnExplanation {
+    border-left: unset;
+    border-right: unset;
+    border-bottom: solid 1px whitesmoke;
+    float: left;
+    height: unset;
+    width: 100%;
+    min-height: 100px;
+    padding: unset;
+  }
+
+  .borderRight {
+    border-right: unset;
+  }
+
+  .tryOnExplanation span {
+    float: left;
+    margin-left: 15%;
+    padding-top: 10px;
+  }
+
+  .tryOnExplanationMobile span {
+    border: dotted 0px yellow;
+    float: right;
+    margin-right: 15%;
+    padding-top: 10px;
+  }
+
+  .tryOnExplanation p {    
+    float: right;
+    min-width: 250px;
+    padding: 15px;
+  }
+
+  .tryOnExplanationMobile p {
+    border: dotted 0px green;
+    float: left;
+    min-width: 230px;
+    padding: 15px;
+  }
+}

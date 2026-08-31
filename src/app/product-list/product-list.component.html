@@ -1,0 +1,104 @@
+<div class="pageContainer">
+  <div class="brandBannerBox" *ngIf="this.brand != null && this.brand.length > 0">
+    <img src="{{this.brands[0].banner}}" title="{{this.brands[0].name}} Eyeglasses &amp; Sunglasses">
+    <h3>{{this.brands[0].name}} Eyewear</h3>
+    <p>{{this.brands[0].description | translate}}</p>
+  </div>
+  <div class="bannerBox" *ngIf="this.menuItems != null && this.menuItems.length > 0 && this.menuItems[0].banner.length > 0">
+    <img src="{{this.pageBanner}}" title="{{this.menuItems[0].bannerText}} Eyeglasses &amp; Sunglasses">
+    <div class="bannerText">{{this.menuItems[0].bannerText | translate}}</div>
+  </div>  
+  <div class="pageTitle">
+    <h4><a *ngIf="isTitleLinkEnabled" [routerLink]="['/product-list']">{{'Products' | translate}}</a></h4>
+    <h4 *ngIf="!isTitleLinkEnabled">{{'Products' | translate}}</h4>
+    <h4 *ngIf="subTitle.length > 0">&nbsp;>&nbsp;</h4>
+    <h4>{{subTitle | translate}}</h4>
+    <!--
+    <h4 *ngIf="this.keyword.length > 0">&nbsp;>&nbsp;</h4>
+    <h4 *ngIf="this.keyword.length > 0">{{this.keyword}}</h4>
+    -->   
+    <div id="searchFilterIcon" class="searchFilterIcon" (click)="toggleSearchFiltersBox()">
+      <a id="filterBtn" class="filterBtn fancy-button btnVisible" title="Filter">
+        <i id="filterIcon" class="material-icons">filter_list</i>
+      </a>
+    </div> 
+    <div class="itemCntBox">
+      <h5>{{this.products.length}} {{ 'Items' | translate }}</h5>
+    </div>    
+  </div>
+  <div id="searchFiltersBox" class="searchFiltersBox">
+    <div id="genderFilterBox" class="filterBox">
+      <select id="genderSelect" multiple>
+        <option value='K'>Kid</option>
+        <option value='M'>Male</option>
+        <option value='F'>Female</option>
+      </select>
+    </div>
+    <div id="brandFilterBox" class="filterBox">
+      <select id="brandSelect" multiple>
+        <option *ngFor="let brand of brands | slice:0:-1" value='{{brand.name}}'>{{brand.name}}</option>        
+      </select>
+    </div>
+    <div id="shapeFilterBox" class="filterBox">
+      <select id="shapeSelect" multiple>
+        <option value='O'>Oval</option>
+        <option value='R'>Rectangle</option>        
+        <option value='S'>Square</option>      
+      </select>
+    </div>
+  </div>
+  <div class="prodBoxContainer">
+    <div class="searchItemsEmpty" *ngIf="products.length == 0">
+      <span>{{ 'No items found!' | translate }}</span>
+    </div>
+    <div *ngFor="let product of this.products">
+      <div *ngIf="product.promoExpiryDate == '' || product.promoExpiryDate > this.todayDate" class="prodBox">
+        <div *ngIf="product.promo != undefined" class="saleExpiryDateBox">
+          <span *ngIf="product.promoExpiryDate != '' && product.promoExpiryDateInSeconds < 186400">Sale ends in 
+            <countdown 
+              [config]="{leftTime: product.promoExpiryDateInSeconds, notify: [ 2, 5 ], format: 'HH:mm:ss'}" 
+              (event)="handleEvent($event)">
+            </countdown>
+          </span>
+        </div>
+        <div *ngIf="product.promo != undefined" class="saleImgBox">
+          <img class="saleTagImg" src="https://purepng.com/public/uploads/large/91506344883rzefagfyhkuvbadhzxqqsthtipgm05rryxramtr6y5cr0bmshvs4yhuypjfboa4upuciaalyov7rxptonapzanakssqtlechfpza.png" alt="image"/> 
+          <span class="saleAmountLabel">{{product.promo}}% Off</span>
+        </div>
+        
+        <div id="imgBox_{{product.id}}" class="imgBox" (mouseover)="mouseOver(product.id)" (mouseleave)="mouseLeave(product.id)" onclick="return false;">
+          <div class="mySlides fade" *ngFor="let img of product.img; let i = index;">
+            <div class="numberText" hidden>{{i+1}} / {{product.img.length}}</div>
+            <img id="imgProduct" appImgLazy src="placeholder.jpg" data-src="{{img}}" (mouseover)="currentSlide(2, product.id)" (mouseleave)="currentSlide(1, product.id)" style="width: 95%;" alt="image"/>
+          </div>
+        
+          <a id="prev_{{product.id}}" class="prev" (click)="plusSlides(-1, product.id)" style="visibility: visible">&#10094;</a>
+          <a id="next_{{product.id}}" class="next" (click)="plusSlides(1, product.id)" style="visibility: visible">&#10095;</a>
+
+          <br />
+
+          <div class="dots" style="visibility: visible">
+            <span class="dot" (click)="currentSlide(i+1, product.id)" *ngFor="let img of product.img; let i = index;"></span>             
+          </div>
+        </div>
+        
+        <a [title]="product.detail" [routerLink]="['/products', product.id]" class="prodDetLink">
+          <h3>          
+            {{ product.name }}          
+          </h3>
+          <div class="priceBox"> 
+            <h5 [ngClass]="{'crossedLine': product.promo != undefined}">{{ product.price | currency }}</h5>
+            <h5 *ngIf="product.promo != undefined" class="salePrice"> {{ product.price*(100-product.promo)/100 | currency }}</h5>
+          </div>
+          <p *ngIf="product.description">{{product.detail | slice:0:300}}<p>              
+        </a>
+        <div class="buttons" hidden>
+          <button (click)="share()">Share</button>
+          <!--
+          <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

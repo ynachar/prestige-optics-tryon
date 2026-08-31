@@ -1,0 +1,827 @@
+.pageContainer {
+  width: 100%;
+}
+
+.pageTitle {
+  border: solid 1px lightcyan;
+  position: relative;
+  display: block;
+  background-color: lightblue;
+  width: 100%;
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+
+  font-weight: bold;
+}
+
+.pageTitle h4 {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.backToListBtn {
+  background-color: #1976d2;
+  color: white;
+  width: 120px;
+  border-radius: 2px;
+  text-align: center;
+  white-space: nowrap;
+
+  visibility: hidden;
+  height: 0px;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+.saleHeader {
+  border: solid 1px lightsalmon;
+  color: red;
+  background-color: lightgoldenrodyellow;
+  padding: 10px;
+  max-width: 160px;
+  border-radius: 5px;
+}
+
+.backToListBtn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.tryUploadContainer {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 10px;
+  clear: both;
+  z-index: 10;
+  overflow: visible;
+}
+
+.try-upload .tryUploadContainer {
+  position: relative;
+  display: block;
+  width: 370px;
+  margin: 0 auto;
+}
+
+.main-photo {
+  position: relative;
+  /*background-color: #fff;*/
+}
+
+#imgProduct {
+  border: double 1px aquamarine;
+  background-color: azure;
+}
+
+#imgBox:hover {
+  cursor: zoom-in;
+}
+
+.try-upload .main-photo {
+  position: relative;
+  width: 335px;
+  height: 285px;
+  border: 1px dashed #555;
+  background-color: #fff;
+}
+
+.thumbnail {
+  display: block;
+  width: 100%;
+  height: 460px;
+  margin: 0 auto;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.specsBox {
+  border: solid 1px lightblue;
+  color: black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 2px;
+}
+
+.specSection {
+  border: dotted 0px lightblue;
+  color: black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 30%;
+  height: auto;
+  padding: 10px;
+  margin: 5px;
+}
+
+.specSectionValue {
+  font-weight: bold;
+}
+
+.noTryOnBox {
+  border: solid 1px lightgray;
+  background-color: lightcyan;
+  color: black;
+  position: relative;
+  display: block;
+  width: 55%;
+  height: 100px;
+  padding: 16px;
+  margin: 5px;
+  border-radius: 2px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.upload-container {
+  border: dotted 1px gray;
+  position: relative;
+  display: flex;
+  width: 450px;
+  align-content: space-between;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.try-upload .main-photo .default-tips {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 42%;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: #a3a3a3;
+}
+
+.prodDetails {
+  border: solid 0px green;
+  position: relative;
+  width: 59%;
+  min-height: 250px;
+}
+
+.prodDetails h5 {
+  width: 97%;
+}
+
+.imgBox {
+  position: absolute;
+  z-index: 0;
+  background-color: white;
+  width: 40%;
+  height: 220px;
+  margin: 5px;
+  border-radius: 2px;
+  top: 80px;
+  right: 5px;
+  box-shadow: 0px 0px 5px 1px lightsteelblue;
+}
+
+.imgBoxModal {
+  width: 100%;
+  height: 65%;
+  z-index: 5000;
+  top: -5%;
+  right: 0px;
+}
+
+.imgBoxModal #imgProduct:hover,
+.imgBoxModal:hover {
+  cursor: pointer !important;
+}
+
+.imgBoxModal #imgProduct {
+  position: relative !important;
+  display: block !important;
+  width: 95% !important;
+  margin: 0 auto !important;
+  margin-top: 2.5% !important;
+  max-height: 380px !important;
+}
+
+.imgBox #imgProduct {
+  border: 0;
+  position: absolute;
+  width: 95%;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  border-radius: 5px;
+  max-height: 200px;
+}
+
+.productImages {
+  max-width: 250px;
+}
+
+.productImages img {
+  width: 100%;
+}
+
+.tryOnStage {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 460px;
+  background-color: #e8e8e8;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.productPreview {
+  border: dotted 0px green;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20%;
+  height: auto;
+  margin: 0;
+  z-index: 2;
+  pointer-events: none;
+  transform: none;
+}
+
+.previewControlsBox {
+  border: double 0px lightskyblue;
+  position: absolute;
+  display: block;
+  height: 104px;
+  width: 100%;
+  z-index: 5;
+}
+
+.arrow-up,
+.arrow-down,
+.arrow-right,
+.arrow-left,
+.center-box,
+.fullscreenBtn {
+  position: absolute;
+  white-space: nowrap;
+}
+
+.arrow-up {
+  border-bottom: 30px solid #1976d2;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  top: 0;
+  left: 35px;
+}
+
+.arrow-down {
+  border-top: 30px solid #1976d2;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  top: 70px;
+  left: 35px;
+}
+
+.arrow-right {
+  border-left: 30px solid #1976d2;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+
+  top: 35px;
+  left: 70px;
+}
+
+.arrow-left {
+  border-right: 30px solid #1976d2;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+
+  top: 35px;
+  left: 1px;
+}
+
+.center-box {
+  background-color: #1976d2;
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  opacity: 0.7;
+
+  top: 35px;
+  left: 35px;
+}
+
+.fullscreenBtn,
+#imgInput,
+.clearImage,
+.tryProduct {
+  background-color: #1976d2;
+  color: white;
+  width: 110px;
+  padding: 8px 16px;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.fullscreenBtn {
+  top: 5px;
+  right: 5px;
+  width: auto;
+  min-width: 110px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.exitFullscreenBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+.exitFullscreenBtn:hover {
+  background-color: #505050;
+  color: #ffffff;
+}
+
+.tryUploadContainer.tryOnFullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.58);
+  overflow: hidden;
+}
+
+.tryUploadContainer.tryOnFullscreen .main-photo {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  max-width: 90%;
+  max-height: 90%;
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  background: #161616;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.tryUploadContainer.tryOnFullscreen .upload-container {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  border: none;
+  background: #161616;
+}
+
+.tryUploadContainer.tryOnFullscreen .tryOnStage {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background: #161616;
+}
+
+.tryUploadContainer.tryOnFullscreen .thumbnail {
+  width: 100%;
+  height: 100%;
+  /* Same crop as normal try-on so MediaPipe eye mapping stays aligned. */
+  object-fit: cover;
+  object-position: center top;
+}
+
+.tryUploadContainer.tryOnFullscreen .previewControlsBox {
+  display: none !important;
+}
+
+.arrow-up:hover,
+.arrow-down:hover,
+.arrow-right:hover,
+.arrow-left:hover {
+  opacity: 0.7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.uploadBottom {
+  border: solid 0px blue;
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 40px;
+  padding-top: 8px;
+  margin: 0;
+  margin-top: 8px;
+  clear: both;
+  box-sizing: border-box;
+}
+
+#imgInput {
+  border: dotted 1px black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.uploadBtn,
+.clearImage,
+.tryProduct {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  white-space: nowrap;
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 8px;
+  border-radius: 2px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.uploadBtn {
+  overflow: hidden;
+}
+
+.tryProduct {
+  left: auto;
+  top: auto;
+}
+
+.clearImage {
+  left: auto;
+  top: auto;
+}
+
+.fullscreenBtn:hover,
+.uploadBtn:hover,
+.clearImage:hover,
+.tryProduct:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.disabledBtn {
+  background-color: darkgray;
+  pointer-events: none;
+}
+
+/* Fixed size */
+/*
+#my-fitmix-container {
+    width : 660px; 
+    height : 560px;
+}
+*/
+
+/******************************************/
+
+@media screen and (max-width: 900px) {
+  .prodDetails {
+    width: 50%;
+  }
+
+  .prodDetailsMobile {
+    width: 100%;
+  }
+
+  .specsBox {
+    margin-top: 10%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .imgBox {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 380px;
+  }
+
+  .imgBox img {
+    transition: unset;
+    cursor: unset;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  #imgProduct {
+    max-width: unset;
+  }
+
+  .addToCartBtn {
+    position: absolute;
+    top: 270px;
+    left: 5px;
+    width: 99%;
+    margin: 0 auto;
+  }
+
+  .addToCartBtn button {
+    font-size: 16px;
+    padding: 10px 12px 10px 12px;
+
+    width: 100%;
+    position: relative;
+    display: block;
+    float: left;
+
+    text-transform: uppercase;
+  }
+
+  .imgBox {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 15em;
+    margin: 0 auto;
+    margin-top: 45%;
+    max-width: 500px;
+    top: unset;
+    right: unset;
+  }
+
+  .prodDetails {
+    width: 100%;
+    min-height: 170px;
+  }
+
+  .fullscreenBtn,
+  .uploadBtn,
+  .clearImage,
+  .tryProduct {
+    font-size: 16px;
+    padding: 10px 12px 10px 12px;
+
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .prodDetails {
+    margin-top: 5px;
+    padding-left: 0px;
+  }
+
+  .upload-container {
+    border: dotted 1px gray;
+    width: 100%;
+    align-content: space-between;
+    border-radius: 3px;
+    margin-top: 5px;
+  }
+
+  .try-upload .main-photo {
+    height: auto;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .try-upload .tryUploadContainer {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .previewControlsBox {
+    width: 100%;
+  }
+
+  .thumbnail {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .uploadBottom {
+    border: dashed 0px black;
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .uploadBtn,
+  .tryProduct,
+  .clearImage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: none;
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    top: unset;
+    left: unset;
+    margin-top: 0;
+    padding: 10px 4px;
+    font-size: 13px;
+    white-space: normal;
+    line-height: 1.2;
+    border-radius: 2px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 370px) {
+}
+
+/*************************************************
+  sliders 
+  ************************************************/
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+.mySlides {
+  display: none;
+}
+img {
+  vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 20px 8px 20px 8px;
+  margin-top: -30px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 25px 25px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 25px 0 0 25px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prevnexthover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numberText {
+  color: white;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dots {
+  position: absolute;
+  text-align: center;
+  bottom: 2px;
+  width: 100%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  transition: background-color 0.6s ease;
+}
+
+.imgBox .active,
+imgBox .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "Language": "Langue",
+  "en": "Anglais",
+  "fr": "Français",
+    
+  "Welcome Message": "Bienvenue chez Prestige Optics où vous trouverez le meilleur des designs et innovations du marché.",
+  "Virtual Try-On": "Essayage Virtuel",
+  "Main Message": "Ce n’est pas encore l’année 2100, mais assez proche: voyez-vous dans votre prescription préférée ou vos lunettes de soleil dans le confort de votre maison au bout de vos doigts.",
+
+  "Home": "Accueil",
+  "Men": "Homme",
+  "Women": "Femme",
+  "Products": "Produits",
+  "Contacts": "Lentilles",
+  "Contact Us": "Contact",
+
+  "Eyeglasses": "Lunettes de vue",
+  "Sunglasses": "Lunettes de Soleil",
+  "Accessories": "Accessoires",
+  "Clearance": "Soldes",
+
+  "Checkout": "Panier",
+  "Cart": "Panier",
+  "Basket": "Panier",
+
+  "Convenient!": "Pratique!",
+  "ConvenientText": "Essayez les dernières paires du marché quand vous le souhaitez! Il n'est jamais trop tard pour découvrir les dernières innovations en matière de lunettes de vue ou de lunettes de soleil.",
+
+  "Safe!": "Sécurisé!",
+  "SafeText": "Profitez des dernières paires sans aucun doute pour votre sécurité! Vous pouvez essayer tout ce que vous voulez sans vous soucier de votre hygiène personnelle ou de votre sécurité.",
+
+  "Fast!": "Rapide!",
+  "FastText": "C'est aussi simple et rapide que 1-2-3!</p><ol><li>Sélectionnez le produit à prévisualiser</li><li>Téléchargez votre photo ou prenez-la depuis votre appareil</li><li>Essayez la</li></ol><p>Si vite que vous pourrez parcourir toute la sélection sans transpirer.",
+
+  "Product Details": "Détails du produit",
+  "No items found!": "Aucun élément trouvé!",
+
+  "AllRightsReserved": "Tous les droits sont réservés",
+
+  "Phone Number": "Numéro de téléphone",
+  "Fax Number": "Numéro de fax",
+
+  "Cart is Empty": "Votre panier est vide",
+  "Add to Cart": "Ajouter au panier",
+  "Zoom In": "Agrandir",
+  "Zoom Out": "Réduire",
+  "Load my picture": "Ajoutez ma photo",
+  "Try On": "Essayez",
+  "Clear Preview": "Effacer l'aperçu",
+
+  "Savings": "Réductions",
+
+  "Items": "Articles",
+  "Item": "Article",
+
+  "has been added to the cart!": "a été ajouté au panier!",
+
+  "Clear Cart": "Vider le Panier",
+
+  "Request Showing": "Demander Essayage",
+  "Cart Total": "Total du Panier",
+  "New Cart Total": "Somme finale",
+  "Items in the basket": "Articles dans le Panier",
+  "Cart Summary": "Résumé du Panier",
+  "TryOnNotAvailable": "La fonction d'essayage n'est pas disponible pour ce produit.",
+
+  "OurBrands": "Nos Marques",
+  "OurSelection": "Nos Sélections",
+  "OurBenefits": "Nos Bénefits",
+  
+  "PickFrame": "Je sélectionne ma monture",
+  "UploadPhoto": "Je télécharge ma photo",
+  "TryItOn": "Je l'essaye",
+
+  "Kids": "Enfants",
+
+  "All Kids' Glasses": "Tous les Monture pour Enfants"
+
+
+}

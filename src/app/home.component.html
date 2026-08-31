@@ -1,0 +1,103 @@
+<div class="pageContainer">
+  <div class="pageTitle"><h2>Home</h2></div>  
+
+  <div>
+    <div class="welcomeMsg">
+      <h3>{{ 'Welcome Message' | translate}}</h3>
+    </div>    
+    <div class="bannersBox">
+      <section class="banners sliderBanners">
+        <div *ngFor="let banner of banners | slice:0:-1">
+          <a [title]="banner.name" [routerLink]="[banner.link]">
+            <div class="bannerText">
+              <h1>{{banner.name}}</h1>
+              <h3>{{banner.description}}</h3>
+              <div class="boxedText">{{banner.boxedText}}</div>
+            </div>
+            <img class="sliderBannersImg" src="{{banner.img}}" alt=""/>      
+          </a>
+        </div>
+      </section>
+    </div>
+    
+    <div class="titleBox">      
+      <h2>{{ 'OurBrands' | translate}}</h2>      
+    </div>
+    <div class="brandsBox">
+      <section class="brands sliderBrands" dir="rtl">
+        <div *ngFor="let brand of brands | slice:0:-1">
+          <a [title]="brand.name" [routerLink]="['/product-list/brand/', brand.name]">
+            <img src="{{brand.img}}" (mouseover)="mouseOver(brand)" (mouseleave)="mouseLeave(brand)" />
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="titleBox">
+      <h2>{{ 'OurSelection' | translate}}</h2>
+    </div>
+    <div class="productsBox">
+      <section class="products sliderProducts">
+        <div *ngFor="let product of products | slice:0:-1">
+          <a [title]="product.detail" [routerLink]="['/products', product.id]">
+            <img id="prodImg_{{product.id}}" src="{{product.img[0]}}" (mouseover)="mouseOver(product)" (mouseleave)="mouseLeave(product)" hidden/>
+            <p>{{ product.name }}</p>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="titleBox">
+      <h2>{{ 'OurBenefits' | translate}}</h2>
+    </div>
+    <div class="promoContainer">
+      <a title="25 Off Sale on select items!" [routerLink]="['/product-list/promo/all']">
+        <img class="promoImg" src="https://www.transparentpng.com/download/special-offer/special-offer-tag-png-pictures-4.png" width="250px" alt="image"/>
+      </a>
+    </div>    
+    <div class="modelImgContainer">
+      <img id="modelImg" class="modelImg fade" src="assets/images/tryon-far.jpg"
+      (load)="onModelLoad()" style="background-color: green;" alt="image"/>
+      <section class="tryOn slider productPreviewBox" data-sizes="75vw">
+        <div *ngFor="let product of products | slice:0:7">
+          <a [title]="product.detail" [routerLink]="['/products', product.id]">
+            <img src="{{product.prevImg}}" hidden/>
+            <div class="prodName">
+              <!--<p>{{ product.name }}</p>-->
+            </div>            
+          </a>
+        </div>
+      </section>
+    </div>    
+    <div class="kidsContainer">
+      <a title="Montures durable pour Enfant!" [routerLink]="['/product-list/K']">
+        <img src="https://static.zennioptical.com/marketing/campaign/holiday2019/kids_tlc/6_tile_d_spot_05_kids-lg.jpg?quality=high" alt="image"/>
+        <span>{{'Kids' | translate}}</span>
+      </a>
+    </div>
+    <div class="cheapItemsContainer">
+      <div class="cheapItemsBox">
+        <a title="Low price selection!" [routerLink]="['/product-list/promo/50']">
+          <div>
+            {{'Under' | translate}}
+            <br />
+            {{ 50 | currency }}
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="titleBox">
+      <h2></h2>
+    </div>
+
+    <div class="tryOnBox">
+      <section class="slogans slider2">
+        <div id="slogDiv_{{slogId}}" *ngFor="let slogan of slogans; index as slogId">
+          <h1>{{slogan.header | translate}}</h1>
+          {{DomParser(slogId, slogan.text)}}
+        </div>          
+      </section>
+    </div>
+  </div>
+</div>

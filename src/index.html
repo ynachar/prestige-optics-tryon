@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" onresize="showHideMenu()">
+  <head>
+    <meta charset="utf-8" />
+    <title>Prestige Optics</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://www.cssscript.com/demo/multiselect-dropdown-list-checkboxes-multiselect-js/styles/multiselect.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css"
+    />
+  </head>
+
+  <body class="blueTheme">
+    <div class="appContainer">
+      <app-root></app-root>
+    </div>
+
+    <script defer>
+      function showHideMenu() {
+        console.log(document.body.clientWidth);
+        let htmlWidth = document.body.clientWidth;
+
+        var menuCont = document.getElementById('menuContainer');
+        if (document.body.clientWidth >= 686)
+          menuCont.style.visibility = 'visible';
+        else menuCont.style.visibility = 'collapse';
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    ></script>
+
+    <script
+      src="https://demos.codexworld.com/multi-select-dropdown-list-with-checkbox-jquery/jquery.multiselect.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"
+      defer
+    ></script>
+
+    <!--<script src="https://static.fittingbox.com/api/v1/fitmix.js" defer></script>-->
+
+    <script type="application/json">
+      $(document).ready(function() {
+        //runMultiSelect();
+
+        //Home page try on preview fix
+        //console.log('path: ' + window.location.pathname);
+
+        //Fix for mouse back button click for home page slick
+        $(window).on('popstate', function() {
+          if(window.location.pathname == "/" || window.location.pathname == "" || window.location.pathname.toLowerCase() == "\home")
+            location.reload(true);
+        });
+
+        //console.log('location.path: ' + location.path);
+
+        runSlick();
+
+        runFlatPickr();
+
+        /*
+        var params = {
+            apiKey: 'TBVAcXitApiZPVH791yxdHbAc8AKzBwtCnjtv6Xn', // This is a demo apiKey and must be updated to your own apiKey (see Requirements > API Key)
+        };
+
+        fitmixInstance = FitMix.createWidget('my-fitmix-container',
+            params,
+            function() {
+                // fitmixInstance is ready
+                console.log('fitmixInstance creation complete.');
+
+                // Set the current frame
+                // This is a demo glassesId and must be updated to your own glassesId value
+                // This function can be called again to change the frame
+                fitmixInstance.setFrame('1703-433486'); // for glassesId values, see Requirements > glassesId
+            }
+        );
+        */
+      });
+
+      window.addEventListener('ngRunSlick', function(e) {
+        reRunSlick();
+      });
+
+      window.addEventListener('ngRunMultiSelect', function(e) {
+        runMultiSelect();
+      });
+
+      window.addEventListener('ngRunFlatPickr', function(e) {
+        runFlatPickr();
+      });
+
+      function runFlatPickr() {
+        $("#dateTimePicker").flatpickr({
+          enableTime: true,
+          time_24hr: true,
+          minDate: new Date().fp_incr(1),
+          maxDate: new Date().fp_incr(60),
+          placeholder: 'adws',
+          dateFormat: "d/m/Y H:i",
+          "disable": [
+              function(date) {
+                return (date.getDay() === 0 || date.getDay() === 6);  // disable weekends
+              }
+          ],
+          "locale": {
+              "firstDayOfWeek": 1 // set start day of week to Monday
+          }
+        });
+      }
+
+      function applyGenderFilter() {
+        var cbs = $("#genderFilterBox li.selected :checkbox").map(function () {
+          console.log($(this).val() + ' selected!');
+          return $(this).val();
+        }).get();  // all selected values
+
+        //console.log('count: ' + cbs.length);
+      }
+
+      function applyBrandFilter() {
+        var cbs = $("#brandFilterBox li.selected :checkbox").map(function () {
+          console.log($(this).val() + ' selected!');
+          return $(this).val();
+        }).get();  // all selected values
+
+        //console.log('count: ' + cbs.length);
+      }
+
+      function applyShapeFilter() {
+        var cbs = $("#shapeFilterBox li.selected :checkbox").map(function () {
+          console.log($(this).val() + ' selected!');
+          return $(this).val();
+        }).get();  // all selected values
+
+        //console.log('count: ' + cbs.length);
+      }
+
+      function runMultiSelect() {
+        //console.log('before');
+
+        //console.log('after');
+        /*
+        $('.filterBox li > label > input').on('click', function (e) {
+          console.log('clicked ' + this.value);
+
+          var cbs = $("#genderFilterBox li.selected :checkbox").map(function () {
+            console.log($(this).val() + ' selected!');
+            return $(this).val();
+          }).get();  // all selected values
+
+          console.log('count: ' + cbs.length);
+
+          for (var i in cbs) {
+            console.log(cbs.val);
+          }
+
+          if (cbs.length > 0) {  // check the condition your selecting or unselected  option
+            ;//console.log(all.count + ' selected!');
+          }
+
+        });
+        */
+      }
+
+      //console.log('location.path: ' + location.path);
+      //console.log('path: ' + document.path);
+
+      function reRunSlick() {
+        destroySlick();
+        runSlick();
+      }
+
+      function destroySlick() {
+        //console.log('destroySlick() called...');
+
+        if ($(".banners").hasClass('slick-initialized')) {
+          $(".banners").slick('destroy');
+          //console.log('destroyed for banners');
+        }
+
+        if ($(".brands").hasClass('slick-initialized')) {
+          $(".brands").slick('destroy');
+          //console.log('destroyed for brands');
+        }
+
+        if ($(".products").hasClass('slick-initialized')) {
+          $(".products").slick('destroy');
+          //console.log('destroyed for products');
+        }
+
+        if ($(".tryOn").hasClass('slick-initialized')) {
+          $(".tryOn").slick('destroy');
+          //console.log('destroyed for tryOn');
+        }
+
+        if ($(".slogans").hasClass('slick-initialized')) {
+          $(".slogans").slick('destroy');
+          //console.log('destroyed for slogans');
+        }
+      }
+
+      function runSlick() {
+        //console.log('runSlick() called...');
+        $(".banners").slick({
+          autoplay: false,
+          autoplayspeed: 15000,
+          centerMode: false,
+          centerPadding: '0px',
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          fade: false,
+          arrows: true,
+          dots: true,
+          swipeToSlide: true,
+          focusOnSelect: true,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: true,
+                centerMode: false,
+                centerPadding: '0px',
+                slidesToShow: 1
+              }
+            },
+            {
+              breakpoint: 430,
+              settings: {
+                centerMode: false,
+                centerPadding: '20px',
+                dots: false,
+                arrows: false,
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+
+        $(".brands").slick({
+          autoplay: true,
+          autoplayspeed: 5000,
+          centerMode: false,
+          centerPadding: '90px',
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          fade: false,
+          arrows: true,
+          dots: false,
+          rtl: true,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: true,
+                centerMode: true,
+                centerPadding: '20px',
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 430,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '5px',
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+
+        $(".products").slick({
+          autoplay: true,
+          autoplayspeed: 15000,
+          centerMode: true,
+          centerPadding: '80px',
+          slidesToShow: 3,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: true,
+                centerMode: true,
+                centerPadding: '20px',
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 430,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '20px',
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+
+        $(".tryOn").slick({
+          autoplay: true,
+          autoplayspeed: 25000,
+          dots: false,
+          infinite: true,
+          fade: false,
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipeToSlide: true,
+          focusOnSelect: true
+        });
+
+        $(".slogans").slick({
+          autoplay: true,
+          autoplayspeed: 25000,
+          infinite: true,
+          dots: true,
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipeToSlide: true,
+          focusOnSelect: true
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<div class="app-menu">
+  <div id="menuContainer" class="menuContainer">
+		<div *ngFor="let menuItem of menuItems">
+			<div *ngIf="menuItem.name != ''" [ngClass]="{'menuItem': true, 'menuItemSubs': menuItem.subItems.length >= 1, 'menuContainerPromo': menuItem.link == '/product-list/promo/all', 'menuHidden': menuItem.active == 0 }" 
+          (click)="toggleMenu()" routerLink="{{menuItem.link}}">
+				{{menuItem.name | translate}}
+        <div class="dropdown-content">
+          <a *ngFor="let subMenuItem of menuItem.subItems" (click)="goToUrl(['/product-list/' + subMenuItem.param])">{{subMenuItem.name | translate}}</a>
+        </div>
+			</div>
+		</div>
+    <div id="searchBox" class="searchBox">
+      <img (click)="searchIconClick()" class="searchIcon" src="https://www.clipartmax.com/png/full/74-742441_preamps-white-search-icon-svg.png" alt="img" />
+      <input id="searchTextBox" class="searchTextBox" (keydown.enter)="searchIconClick()" placeholder="Search" type="text" required/>
+    </div>
+    <div class="langSelectionBox">
+      <select id="langSelection" (change)="switchLang(langSelection.value)" #langSelection>
+        <option *ngFor="let language of this.translateService.getLangs()" 
+              [value]="language"
+              [selected]="language === this.translateService.currentLang">
+              {{ language | translate}}
+        </option>
+      </select>
+    </div>
+	</div>
+  <a href="javascript:void(0);" (click)="toggleMenu()" class="icon mbNavIcon">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>

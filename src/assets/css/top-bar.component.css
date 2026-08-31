@@ -1,0 +1,64 @@
+/* Top Bar styles */
+
+.topBarContainer {
+  border: solid 0px black;
+  width: 1200px;
+  padding: inherit;
+  height: inherit;
+  margin: 0 auto;
+}
+
+.logo {
+  border: solid 0px black;
+  position: relative;
+  display: block;  
+  float: left;
+  width: 70%;
+  margin: 15px auto;  
+}
+
+h1 {
+  font-family: fantasy;
+  font-style: italic;
+  font-size: xxx-large;
+  display: inline-block;
+  color: white;
+  margin: 0;
+}
+/*
+h1:first-letter {
+  font-size: 2em;
+  float: left;
+  margin-top: -0.45em;
+}
+*/
+.cartBtn {
+  border: solid 0px black;
+  position: relative;
+  float: right;
+  width: 140px;
+  margin: 15px auto;  
+}
+
+.itemsCnt {
+  border: solid 2px #1976d2;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: blue;
+  font-weight: bold;
+  font-size: 14px;
+  width: 25px;
+  background-color: lightcyan;
+  border-radius: 15px;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.btnHidden {
+  visibility: hidden;
+}
+
+.btnVisible {
+  visibility: visible;
+}

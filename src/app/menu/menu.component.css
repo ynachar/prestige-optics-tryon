@@ -1,0 +1,348 @@
+.menuContainer {
+  border: solid 0px black;
+  position: relative;
+  display: inline-flex;
+  visibility: visible;
+  width: 1200px;
+  height: inherit;
+  margin: 0 auto; 
+}
+
+.searchBox {
+  border: solid 1px transparent;
+  position: absolute;
+  top: 0px;
+  right: 80px;
+  width: 170px;  
+  height: 45px;  
+  margin-right: 25px;
+  padding: 10px 5px 0px 5px;
+}
+
+.searchIcon {
+  width: 25px;
+  padding-top: 3px;
+  background-color: transparent;
+  float: right;  
+}
+
+.searchIcon:hover {
+  cursor: pointer;
+}
+
+.searchTextBox {
+  border: solid 0px black;
+  position: absolute;
+  top: 2px;
+  right: 20px;
+  width: 0px;  
+  height: 35px;  
+  margin: 5px 15px 5px 15px;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  opacity: 0;
+}
+
+.showSearchTextBox {
+  width: 150px;
+  transition: width 1s, opacity 1s;
+  opacity: 1;
+}
+
+.langSelectionBox {
+  border: solid 0px black;
+  position: absolute;
+  right: 0px;
+  width: 105px;  
+  /*
+  margin-right: 25px;
+  */
+}
+
+.langSelectionBox * {
+  display: inline-block;  
+}
+
+.langSelectionBox > select {
+  border: none;  
+  
+  background-color: transparent;
+  color: white;
+  padding: 13px;
+  font-size: 16px;
+  outline: none;   
+}
+
+.langSelectionBox > select:hover {
+  color: wheat;
+}
+
+.menuItem {
+  /*border-left: solid 1px #1956d2;*/
+
+  position: relative;
+  display: block;
+
+  color: white;
+  padding: 13px 15px;
+
+  font-size: 18px;  
+  
+  text-transform: uppercase;
+}
+
+.menuHidden {
+  display: none;
+}
+
+.menuContainerPromo {
+  /*background-image: linear-gradient(#fa7f89 10%, #d9505d 70%);*/
+  font-weight: bold;
+}
+
+.menuItem:active,
+.menuItem:hover,
+.menuItem:focus {
+  /*border-left: solid 1px #1976d2;*/
+  border-bottom: solid 3px wheat;
+  cursor: pointer;
+  outline: 0;
+}
+
+.active {
+  /*border-left: solid 1px #1976d2;*/
+  border-bottom: solid 3px wheat;
+  cursor: pointer;  
+}
+
+.menuItem:active,
+.menuItem:hover,
+.menuItem:focus,
+.active {
+  background-image: linear-gradient(#3288df, rgba(100, 70, 130, 2));
+}
+
+.menuItem a {
+  color: white;
+  padding: 12px 15px 12px 25px;
+}
+
+/*** DropDown mnenu ***/
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 200px;
+  width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+  
+  margin-top: 16px;
+  margin-left: -27px;
+}
+
+.dropdown-content a {
+  display: block;
+  color: black;
+  /*padding: 12px 27px;*/
+  text-decoration: none;  
+}
+
+.dropdown-content a:active,
+.dropdown-content a:focus {
+  outline: none;
+}
+
+.dropdown-content a:hover {
+  background-color: lightsteelblue;
+  outline: none;
+}
+
+.menuItem:hover .dropdown-content {
+  display: block;
+}
+
+.menuItem:hover .dropbtn {
+  background-color: #3288df;
+}
+
+/***************************************/
+
+@media screen and (min-width: 701px) {
+  app-top-bar {
+    height: 50px;
+  }
+  
+  .menuContainer {
+    visibility: visible;
+  } 
+
+  .mbNavIcon{
+    visibility: hidden;
+  }    
+}
+
+@media screen and (max-width: 700px) {
+  * {
+    color: white;
+  }
+
+  .mbNavIcon {
+    border: solid 0px white;
+    /*
+    background-color: #3b2895;
+    */
+    position: absolute;
+    right: 0;
+    width: auto;
+    font-size: 30px;    
+    padding: 6px 20px;
+  }
+
+  .menuContainer {
+    position: relative;
+    display: block;
+    visibility: collapse;
+    z-index: 500;
+    margin-top: 3em;
+  }  
+
+  .langSelectionBox {
+    border: solid 0px black;
+    position: absolute;
+    left: 40px;
+    top: -50px;
+    width: 105px;  
+    margin-right: 25px;
+    visibility: visible;
+  }
+
+  .langSelectionBox > select {
+    border: none;  
+    
+    background-color: transparent;
+    color: white;    
+  }
+
+  .langSelectionBox > select option {
+    background-color: white;
+    color: black;
+  }
+
+  .menuItem {
+    border-top: solid 1px lightcyan;
+    padding: 25px 15px 25px 15%;
+    font-size: 18px;
+    /*background: #3b2895;*/
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 1000;
+  }
+  
+  .menuContainer div:nth-child(3) .menuItem {
+    background-color: darkred;
+  }
+
+  .menuItem:active,
+  .menuItem:hover,
+  .menuItem:focus {
+    border-bottom: solid 0px wheat;        
+  }
+
+  .menuItem:hover {
+    border-bottom: solid 1px lightblue;
+    background:  #2755b8;
+    padding: 25px 15px 25px 15%;    
+  }
+    
+  .menuItemSubs::after {
+    border: solid 0px black;
+    position: absolute;
+    display: block;
+    top: 23px;
+    right: 25px;
+    color: white;
+    font-size: 24px;
+    content: ">";
+    transform: rotate(90deg);
+  }
+
+  .menuContainer {
+    /* temp until done with mb menu */
+    /*visibility: visible;*/
+  }
+
+  .dropdown-content {
+    border: solid 0px black;
+    position: relative;
+    display: none;
+    background-color: lightcyan;
+
+    margin-left: -105px;
+    margin-right: -15px;
+
+    margin-bottom: -27px;
+
+    padding-left: 60px;
+    padding-right: 50px;
+  }
+
+  .dropdown-content a {
+    border: solid 1px lightsteelblue;
+    height: 60px;
+    padding: 17px 3em 17px 9em;
+    margin-left: -105px;
+    margin-right: -50px;    
+  }
+
+  .searchBox {
+    border: solid 0px black;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 0px;
+    padding: 10px;
+    visibility: collapse;
+    background-color: #451082;
+  }
+
+  .searchBoxExpanded {
+    height: 55px;
+    transition: height 0.5s;
+    visibility: visible;
+  }
+
+  .searchIcon {
+    position: absolute;
+    top: -40px;
+    left: 15px;
+    visibility: visible;    
+  }
+
+  .searchTextBox {
+    border: solid 0px black;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 5px;  
+    height: 40px;
+    padding: 5px 10px 5px 10px;
+    outline: none;
+    border-radius: 5px;
+    opacity: 0;
+    overflow: visible;
+    color: black;
+    font-size: 16px;
+  }
+
+  .showSearchTextBox {
+    width: 97%;
+    transition: width 1s, opacity 3s;
+    opacity: 1;
+    left: 0;
+    top: -5px;    
+  }
+  
+}

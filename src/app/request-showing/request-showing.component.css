@@ -1,0 +1,282 @@
+.pageContainer {
+  position: relative;
+  display: block;  
+  width: 100%;
+}
+
+.pageTitle {
+  border: solid 1px lightcyan;
+  position: relative;
+  display: block;
+  float: left;
+  background-color: lightblue;
+  width: 100%;
+  padding-left: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+h3 {
+  line-height: 40px;
+}
+
+.btn {
+  background-color: #1976d2;
+  position: relative;
+  display: block;
+  float: left;
+  color: white;
+  width: 80%;
+  padding: 8px 16px;
+  margin-left: 15px;
+  border-radius: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.controlBtns {
+  border: solid 0px black;
+  position: relative;
+  display: inline-flex;
+  float: left;
+  padding: 0px;  
+  width: 28%;
+  height: auto;
+  margin-top: 15px;
+  margin-left: 15px;
+  padding-left: 5px;
+}
+
+.formBox {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 70%;
+}
+
+.formField50Left, 
+.formField50Right {
+  position: relative;
+  display: block;
+  width: 50%;
+}
+
+.formField60Left {
+  position: relative;
+  display: block;
+  width: 60%;
+}
+
+.formField50Right {
+  position: relative;
+  display: block;
+  float: right;
+  width: 50%;
+}
+
+.formField40Right {
+  position: relative;
+  display: block;
+  float: right;
+  width: 40%;
+}
+
+.formField50Left > input, 
+.formField50Right > input, 
+.formField60Left > input, 
+.formField40Right > input {
+  width: 97%;
+}
+
+.formField50Left > input, 
+.formField60Left > input {
+  float: left;
+}
+
+.formField50Right > input, 
+.formField40Right > input  {
+  float: right;
+}
+
+.formFieldFull > textarea {
+  border: solid 1px #BDBDBD;
+  width: 100%;
+  resize: none;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+button {
+  background-color: #1976d2;
+  position: relative;
+  display: block;
+  float: left;
+  color: white;
+  width: 100%;
+  font-size: 16px;
+  padding: 8px 16px 10px 16px;
+  border-radius: 2px;
+  text-align: center;
+  white-space: nowrap;  
+}
+
+button:focus {
+  outline: 0;
+}
+
+/* Cart Summary */
+.cartSummary {
+  border: solid 1px lightgray;
+  background-color: lightcyan;
+  color: black;
+  position: relative;
+  display: block;
+  float: right;
+  width: 28%;
+  height: auto;
+  padding: 10px 15px 10px 15px;
+  margin: 0px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.cartSummaryHdr {
+  border-bottom: solid 1px lightgray;
+  position: relative;
+  display: flexbox;
+  float: left;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+}
+
+.cartSummaryCntBox{
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+  height: 30px;
+  text-align: left;
+  margin-top: 15px;
+  font-size: 14px;;
+}
+
+.cartSummaryBox{ 
+  border-bottom: solid 1px lightgray;
+  position: relative;
+  display: flexbox;
+  float: left;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  margin: 1em 0 2em 0;  
+  padding-bottom: 5px;
+  vertical-align: bottom;
+}
+
+.cartTotalText {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 10px;
+}
+
+.cartTotalAmount {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+  right: 0;
+  padding-bottom: 10px;
+}
+
+.ng-invalid {
+  border-left: solid 5px red;  
+}
+
+.ng-valid, .ng-untouched {
+  border-left: solid 1px #BDBDBD;
+  background-color:  rgb(232, 240, 254);
+}
+
+#successMessage, #formSubmissionMessage {
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;  
+}
+
+.successMessage {
+  border: solid 1px lightgray;
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+  background-color: lightyellow;
+  padding: 25px;;
+}
+
+/***************************************/
+
+@media screen and (max-width: 900px) {
+  .cartSummary {
+    width: 100%;
+    height: 103px;
+    margin-top: 10px;
+  }
+
+  .cartSummaryBox {
+    height: auto;
+  }
+
+  .formBox {
+    width: 100%;
+  }
+
+  .controlBtns {
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .cartItem {
+    min-width: unset;    
+    white-space: unset;
+  }
+
+  .cartItemBox {
+    min-width: unset;
+  }
+
+  .imgProdBox {
+    width: 30%;
+  }
+
+  #imgProduct {
+    top: 30%;
+    bottom: 30%;
+  }
+
+  .controlBtns {
+    margin-left: 0px;
+    padding-left: 0px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .controlBtns button{
+    font-size: 18px;
+    padding: 10px 12px 10px 12px;
+
+    text-transform: uppercase;
+  }
+}

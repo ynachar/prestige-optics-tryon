@@ -1,0 +1,145 @@
+.modalBoxWrapper {
+  border: solid 0px black;
+  background-color: lightblue;
+  position: fixed;
+  display: block;    
+  width: 100%;
+  height: 500%;
+  opacity: 0.9;
+  z-index: 5000;
+}
+
+.modalBox {
+    border: solid 2px #1976d2;
+    background-color: lightcyan;
+    color: black;
+    position: relative;
+    display: block;
+    min-width: 250px;
+    max-width: 350px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px auto;
+    margin: 15em auto;
+    
+    top: 0;
+    left: 0;
+    opacity: 100;
+    z-index: 1001;    
+    
+    box-shadow: 0px 0px 7px 1px lightslategray;  
+}
+
+.closeBtn {
+  background-color: #1976d2;
+  color: white;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+}
+
+.closeBtn:hover {
+  opacity: 0.7;
+  cursor: pointer; 
+}
+
+.closeBtnModal {
+  position: fixed !important;
+  top: 15px;
+  right: 15px;
+}
+
+.modalContent {
+  margin: 10px;
+  padding: 15px;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.spinner div {
+  animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+  margin-top: 1.5em;
+}
+.spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: cyan;
+  margin: -4px 0 0 -4px;
+}
+.spinner div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.spinner div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.spinner div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.spinner div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.spinner div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.spinner div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.spinner div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.spinner div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.spinner div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.spinner div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.spinner div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.spinner div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.spinner div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.spinner div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.spinner div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.spinner div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

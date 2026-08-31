@@ -1,0 +1,795 @@
+/* Global Styles */
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #efefef;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dfdfdf;
+}
+
+* {
+  font-family: Calibri, Arial, sans-serif;
+  color: #616161;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0em;
+  height: 400px;
+}
+
+.container {
+  border: solid 0px black;
+  display: flex;
+  flex-direction: row;
+  padding: 12px 20px 10px 20px;
+  margin-bottom: 50px;
+  justify-content: space-between;
+  vertical-align: top;
+  width: 100%;
+  min-height: 550px;
+}
+
+.crossedLine {
+  float: left;
+  text-decoration: line-through;
+  margin: 0;
+  padding-right: 10px;
+}
+
+.salePrice {
+  color: red;
+  font-weight: bold;
+}
+
+.rect {
+  border: solid 0px #a64ceb;
+  top: -1000px;
+  left: -1000px;
+  position: absolute;
+  border-radius: 25px;
+}
+
+/*
+router-outlet + *  {
+  padding: 0 16px;
+}
+*/
+
+/*** Slider ***/
+/*
+.slick-dots {
+    bottom: 7%;
+}
+*/
+
+.sliderProducts .slick-list {
+  max-height: 140px;
+}
+
+.sliderBrands .slick-list {
+  max-height: 200px;
+}
+
+.slick-slide,
+.slick-current,
+.slick-active,
+.slider2:active {
+  border: solid 0px black;
+  outline: none;
+}
+
+.slick-dots li button:before {
+  color: #1976d2 !important;
+}
+
+.banners .slick-prev,
+.banners .slick-next {
+  z-index: 500;
+  width: 50px;
+}
+
+.banners .slick-prev {
+  left: 0px !important;
+}
+
+.banners .slick-next {
+  right: 0px !important;
+  left: unset;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: lightslategrey !important;
+  font-size: 2.5vw;
+  opacity: 0.3;
+}
+
+.banners .slick-dots {
+  bottom: 5px;
+}
+
+.brands .slick-next {
+  right: auto !important;
+  left: -10px !important;
+}
+
+.brands .slick-prev {
+  right: -30px;
+}
+
+ol {
+  margin-left: 11%;
+  outline: none;
+}
+
+ol > li {
+  text-align: left;
+}
+
+ol > li,
+.slick-dots li button:before {
+  font-size: 18px;
+}
+
+.slogans .slick-slide p {
+  font-size: 1.17em;
+}
+
+.slogans .slick-slide h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.slogans .slick-dots {
+  bottom: 5px;
+}
+
+.slogans .slick-slide:nth-child(2) {
+  background: linear-gradient(to right, lightcyan, 55%, cadetblue) !important;
+}
+
+.slogans .slick-slide:nth-child(3) {
+  background: linear-gradient(to right, #fbf7eb, 55%, #c1baaa) !important;
+}
+
+/**********************/
+
+router-outlet + * {
+  border: solid 0px blue;
+  position: relative;
+  display: inline-flex;
+  max-width: 1200px;
+  height: inherit;
+  margin: 0 auto;
+}
+
+app-home,
+app-product-list,
+app-product-details,
+app-cart,
+app-contact-us,
+app-request-showing,
+app-page-not-found {
+  width: 100%;
+  padding: 5px;
+}
+
+app-root,
+.appContainer {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  height: 100%;
+  margin-bottom: -50px;
+  width: 100%;
+  min-width: 650px;
+}
+
+/* Text */
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h1,
+h2 {
+  font-weight: lighter;
+}
+
+p {
+  font-size: 16px;
+}
+
+/* Hyperlink */
+
+a {
+  cursor: pointer;
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Input */
+
+input {
+  font-size: 14px;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #bdbdbd;
+}
+
+label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+  text-transform: uppercase;
+}
+
+/* Button */
+.button,
+button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.button:hover,
+button:hover {
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+.button:disabled,
+button:disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+/* Fancy Button */
+
+.fancy-button {
+  background-color: transparent;
+  color: #1976d2;
+}
+
+.fancy-button i.material-icons {
+  color: var(--fancyButtonColor);
+  padding-right: 4px;
+}
+
+/**************************
+* Universal colors
+**************************/
+.blueTheme {
+  --globalColor: #616161;
+  /*1/24/2021
+  --appTopBarBgImg: linear-gradient(#4d96de, 35%, #68b4ff);*/
+  --appTopBarBgImg: linear-gradient(#6eb7ff, 50%, #93c9ff);
+  --appTopBarBgColor: #93c9ff;
+  /*1/24/2021
+  --appMenuBgImg: linear-gradient(#93c9ff, 55%, rgba(70, 15, 130, 2));
+  */
+  --appMenuBgImg: linear-gradient(#93c9ff, 15%, #4d96de);
+  /*1/24/2021
+  --appBottomBarBgImg: linear-gradient(#68b4ff, 35%, rgba(70, 15, 130, 2));  */
+  --appBottomBarBgImg: linear-gradient(#93c9ff, 15%, #4d96de);
+  --fancyButtonColor: white;
+
+  --menuItemBrdrLeftColor: #1956d2;
+
+  --menuItemHoverBgImg: linear-gradient(#93c9ff, #4d96de);
+  --menuItemHoverBrdrBottomColor: wheat;
+
+  --menuItemActiveBgImage: linear-gradient(#93c9ff, #4d96de);
+
+  --pageTitleBrdrColor: lightcyan;
+  --pageTitleBgColor: lightblue;
+  --pageTitleColor: #616161;
+  --prodBoxBgColor: white;
+  --prodBoxBrdrColor: lightskyblue;
+  --prodBoxHoverBgColor: #eeffff;
+  --prodBoxShadowHover: 0px 0px 15px 3px lightsteelblue;
+
+  --titleBoxBgColor: #f0ffff !important;
+
+  /*--containerBgColor: white;*/
+  --containerBgColor: azure;
+  --containerMrgnBottom: 50px;
+
+  --prodBoxAnchorColor: #1976d2;
+
+  --cartItemCntColor: #616161;
+  --cartBtnsBgColor: #1976d2;
+
+  --checkoutColor: slateblue;
+  --itemsCntBrdr: solid 2px #1976d2;
+  --itemsCntColor: blue;
+
+  --btnsBgColor: #1976d2;
+
+  --itemCntBoxColor: #616161;
+
+  --modalBoxWrapperBgColor: lightblue;
+  --modalBoxShadow: 0px 0px 15px 3px lightcyan;
+  --modalBoxBrdr: solid 2px #1976d2;
+
+  --saleHdrBrdr: solid 1px lightSalmon;
+  --saleHdrBgColor: lightgoldenrodyellow;
+  --saleHdrColor: red;
+
+  --bodyBgColor: #eeffff; /*azure*/
+
+  --SlickSlidePColor: slateblue;
+  --slickDotsColor: #1976d2;
+
+  --modelImgBoxShadow: 0px 0px 75px slateblue;
+  --promoImgFilter: grayscale(0%);
+
+  --appTopBarBgColor: #1976d2;
+
+  --btnScrollTopBgColor: #3288df;
+
+  /*** mobile ***/
+  --menuItemBg: #3b2895;
+  --searchBoxBgColor: #451082;
+
+  --contactContainerBgColor: skyblue;
+}
+
+.darkGrayTheme {
+  --globalColor: #3c3c3c;
+
+  /*--appTopBarBgImg: linear-gradient(#0d1323, 15%, #4c4f55);*/
+  --appTopBarBgImg: linear-gradient(#4b4e54, 20%, #6c7077);
+  --appTopBarBgImg: linear-gradient(#252526, 50%, #8c9096);
+
+  --appTopBarBgColor: #8c9096;
+  --appMenuBgImg: linear-gradient(#8c9096, #252526);
+  --appBottomBarBgImg: linear-gradient(#8c9096, 25%, #252526);
+  --fancyButtonColor: white;
+
+  --menuItemBrdrLeftColor: darkslategrey;
+
+  --menuItemHoverBgImg: linear-gradient(grey, #8c9096);
+  --menuItemHoverBrdrBottomColor: lightgrey;
+
+  --menuItemActiveBgImage: linear-gradient(grey, #8c9096);
+
+  --pageTitleBrdrColor: #8c9096;
+  --pageTitleBgColor: #8c9096;
+  --pageTitleColor: white;
+  --prodBoxBgColor: white;
+  --prodBoxBrdrColor: #60656d;
+  --prodBoxHoverBgColor: #eeecec;
+  --prodBoxShadowHover: 0px 0px 15px 3px #8c9096;
+
+  --titleBoxBgColor: #e9e9e9 !important;
+
+  --containerBgColor: #e9e9e9;
+  --containerMrgnBottom: 50px;
+
+  --prodBoxAnchorColor: #616161;
+
+  --cartItemCntColor: white;
+  --cartBtnsBgColor: #616161;
+
+  --checkoutColor: #616161;
+  --itemsCntBrdr: solid 2px #616161;
+  --itemsCntColor: #60656d;
+
+  --btnsBgColor: darkslategrey;
+  --btnsColor: white;
+
+  --itemCntBoxColor: white;
+
+  --modalBoxWrapperBgColor: #8c9096;
+  --modalBoxShadow: 0px 0px 15px 3px lightgray;
+  --modalBoxBrdr: solid 2px #616161;
+
+  --saleHdrBrdr: solid 1px smokewhite;
+  --saleHdrBgColor: lightgray;
+  --saleHdrColor: darkred;
+  --saleTagImgFilter: grayscale(45%);
+
+  --bodyBgColor: #e9e9e9;
+
+  --SlickSlidePColor: #616161;
+  --slickDotsColor: #616161;
+
+  --modelImgBoxShadow: 0px 15px 130px #616161;
+  --promoImgFilter: grayscale(35%);
+
+  --appTopBarBgColor: #3c3e43;
+
+  --btnScrollTopBgColor: #60656d;
+
+  /*** mobile ***/
+  --menuItemBg: #3c3e43;
+  --menuItem3rdChildMenuItemBgColor: darkred;
+  --searchBoxBgColor: #0e1424;
+
+  --contactContainerBgColor: #8c9096;
+}
+
+body {
+  background-color: var(--bodyBgColor);
+}
+
+#btnScrollTop {
+  border: solid 1px azure;
+  background-color: var(--btnScrollTopBgColor) !important;
+}
+
+.slick-dots li button:before {
+  color: var(--slickDotsColor) !important;
+}
+
+.sliderProducts p {
+  color: var(--SlickSlidePColor) !important;
+}
+
+.modelImg {
+  box-shadow: var(--modelImgBoxShadow) !important;
+}
+
+.promoImg {
+  filter: var(--promoImgFilter);
+}
+
+.cartItemCnt * {
+  color: var(--cartItemCntColor) !important;
+}
+
+.container {
+  color: var(--globalColor) !important;
+}
+/*
+.menuItem {
+  border-left-color: var(--menuItemBrdrLeftColor) !important;
+}
+*/
+
+.menuItem:active,
+.menuItem:hover,
+.menuItem:focus {
+  background-image: var(--menuItemHoverBgImg) !important;
+  border-bottom-color: var(--menuItemHoverBrdrBottomColor) !important;
+}
+.menuContainer .active,
+.dots .active {
+  background-image: var(--menuItemActiveBgImage) !important;
+}
+
+.pageTitle {
+  border-color: var(--pageTitleBrdrColor) !important;
+  background-color: var(--pageTitleBgColor) !important;
+}
+
+.pageTitle h4,
+.pageTitle h4 a {
+  color: var(--pageTitleColor) !important;
+}
+
+.pageTitle h4 a {
+  text-decoration: underline;
+}
+
+.titleBox h2 {
+  background-color: var(--titleBoxBgColor) !important;
+}
+
+.prodBox {
+  background-color: var(--prodBoxBgColor) !important;
+  border-color: var(--prodBoxBrdrColor) !important;
+}
+
+.prodBox:hover {
+  background-color: var(--prodBoxHoverBgColor) !important;
+  box-shadow: var(--prodBoxShadowHover) !important;
+}
+
+.prodBox a {
+  color: var(--prodBoxAnchorColor) !important;
+}
+
+cartBtn .button,
+cartBtn button,
+.clearCartBtn,
+.btn {
+  background-color: var(--cartBtnsBgColor) !important;
+}
+
+.pageContainer .button,
+app-product-details button,
+.uploadBtn,
+.tryProduct,
+.clearImage,
+.center-box,
+.zoomIn,
+.zoomOut,
+.closeBtn {
+  background-color: var(--btnsBgColor) !important;
+}
+
+.arrow-up {
+  border-bottom-color: var(--btnsBgColor) !important;
+}
+
+.arrow-down {
+  border-top-color: var(--btnsBgColor) !important;
+}
+
+.arrow-right {
+  border-left-color: var(--btnsBgColor) !important;
+}
+
+.arrow-left {
+  border-right-color: var(--btnsBgColor) !important;
+}
+
+.container {
+  background-color: var(--containerBgColor) !important;
+  margin-bottom: var(--containerMrgnBottom);
+}
+
+.checkout {
+  color: var(--checkoutColor) !important;
+}
+
+.itemCntBox h5 {
+  color: var(--itemCntBoxColor) !important;
+}
+
+.itemsCnt {
+  border: var(--itemsCntBrdr) !important;
+  color: var(--itemsCntColor) !important;
+}
+
+.modalBoxWrapper {
+  background-color: var(--modalBoxWrapperBgColor) !important;
+}
+
+.modalBox {
+  border: var(--modalBoxBrdr) !important;
+  box-shadow: var(--modalBoxShadow) !important;
+}
+
+.saleHeader {
+  border: var(--saleHdrBrdr) !important;
+  background-color: var(--saleHdrBgColor) !important;
+}
+
+.saleHeader,
+.salePrice {
+  color: var(--saleHdrColor) !important;
+}
+
+.saleTagImg {
+  filter: var(--saleTagImgFilter);
+}
+
+.ms-options {
+  border: solid 0px black;
+  max-height: 250px !important;
+  margin-top: 5px;
+  overflow: unset !important;
+  overflow-x: visible !important;
+}
+
+.ms-options ul li label {
+  margin-bottom: 0px;
+}
+
+.ms-options ul {
+  padding-left: 0px;
+  max-height: 190px;
+  overflow-x: visible;
+}
+
+.ms-options input {
+  margin-bottom: 7px;
+}
+
+.ms-options input[type='checkbox'] {
+  vertical-align: middle;
+}
+
+.ms-options ul li {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 700px) {
+  .menuItem {
+    background: var(--menuItemBg) !important;
+  }
+
+  .searchBox {
+    background-color: var(--searchBoxBgColor) !important;
+  }
+
+  .contactContainer {
+    background-color: var(--contactContainerBgColor) !important;
+  }
+
+  /*
+  .menuContainer div:nth-child(3) .menuItem {
+    background-color: darkred !important;
+  }
+  */
+}
+
+/**************************
+* End of Universal colors
+**************************/
+
+/* Top Bar */
+
+app-top-bar,
+.app-top-bar {
+  border: solid 0px green;
+  display: flex;
+  flex-direction: row;
+  padding: 12px 20px 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 130px;
+
+  background-image: var(--appTopBarBgImg);
+}
+
+/* Menu */
+app-menu,
+.app-menu {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px 0 20px;
+  width: 100%;
+  height: 3em;
+
+  background-image: var(--appMenuBgImg);
+}
+
+/* Bottom Bar*/
+app-bottom-bar,
+.app-bottom-bar {
+  position: relative;
+  display: inline-block;
+  padding: 0px 20px 0px 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 210px;
+
+  background-image: var(--appBottomBarBgImg);
+}
+
+app-bottom-bar *,
+.app-bottom-bar * {
+  color: white;
+}
+
+/* app product list */
+app-product-list {
+  border: solid 0px green;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Checkout Cart, Shipping Prices */
+.cart-item,
+.shipping-item {
+  width: 100%;
+  min-width: 400px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px 32px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  background-color: #eeeeee;
+}
+
+/***************************************/
+@media screen and (max-width: 710px) {
+  app-root,
+  .appContainer {
+    border: solid 0px blue;
+    min-width: 370px;
+  }
+
+  app-top-bar,
+  .app-top-bar {
+    background-image: unset;
+    background-color: var(--appTopBarBgColor) !important;
+    margin-top: 35px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  app-menu {
+    display: inline-block;
+    margin-top: 13px;
+  }
+
+  app-menu,
+  .app-menu {
+    padding: 0px;
+    width: 100%;
+  }
+
+  app-top-bar {
+    height: 60px;
+  }
+
+  .menuItem {
+    background: #3b2895;
+  }
+
+  .menuContainer div:nth-child(3) .menuItem {
+    background-color: darkred;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  app-top-bar,
+  .app-top-bar {
+    background-image: unset;
+    /*background-color: #1976d2;*/
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .container {
+    border: solid 0px black;
+    padding: 5px;
+    margin-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  app-root,
+  .appContainer {
+    border: solid 0px blue;
+    min-width: 270px;
+  }
+
+  .container {
+    border: solid 0px black;
+    margin-bottom: 50px;
+    min-width: 330px;
+  }
+}

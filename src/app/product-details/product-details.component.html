@@ -1,0 +1,176 @@
+<div class="pageContainer">
+  <div class="pageTitle">
+    <h4>
+      <a [routerLink]="['/product-list']">{{ 'Products' | translate }}</a>
+    </h4>
+    <h4>&nbsp;>&nbsp;</h4>
+    <h4>{{ 'Product Details' | translate }}</h4>
+  </div>
+  <div class="backToListBtn" (click)="backToList()">Back to list</div>
+  <div *ngIf="product" class="prodDetails">
+    <h3>{{ product.name }}</h3>
+    <h4 class="saleHeader" *ngIf="product.promo != undefined">
+      On Sale: {{ product.promo }} % Off
+    </h4>
+    <h4 [ngClass]="{ crossedLine: product.promo != undefined }">
+      {{ product.price | currency }}
+    </h4>
+    <h4 *ngIf="product.promo != undefined" class="salePrice">
+      {{ (product.price * (100 - product.promo)) / 100 | currency }}
+    </h4>
+    <h5>{{ product.detail }}</h5>
+    <br /><br />
+  </div>
+  <div class="specsBox">
+    <div *ngFor="let spec of product.specs">
+      <div *ngIf="spec.value != ''" class="specSection">
+        <span>{{ spec.name | translate }}: </span>
+        <span class="specSectionValue">{{ spec.value }}</span>
+      </div>
+    </div>
+  </div>
+  <div id="modalContainer">
+    <div *ngIf="product" id="imgBox" class="imgBox">
+      <div class="mySlides fade" *ngFor="let img of product.img; let i = index">
+        <div class="numberText">{{ i + 1 }} / {{ product.img.length }}</div>
+        <img id="imgProduct" src="{{ img }}" alt="image" />
+      </div>
+      <a
+        class="prev prevnexthover"
+        (click)="plusSlides(-1)"
+        style="visibility: visible"
+        >&#10094;</a
+      >
+      <a
+        class="next prevnexthover"
+        (click)="plusSlides(1)"
+        style="visibility: visible"
+        >&#10095;</a
+      >
+      <br />
+      <div class="dots" style="visibility: visible">
+        <span
+          class="dot"
+          (click)="currentSlide(i + 1)"
+          *ngFor="let img of product.img; let i = index"
+        ></span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="product" class="prodDetails prodDetailsMobile">
+    <h4>{{ 'Description:' | translate }}</h4>
+    <p>{{ product.description }}</p>
+  </div>
+  <div class="addToCartBtn">
+    <button (click)="addToCart(product)">
+      {{ 'Add to Cart' | translate }}
+    </button>
+    <br /><br />
+  </div>
+  <div
+    *ngIf="!product.type.includes('S') && !product.type.includes('P')"
+    class="noTryOnBox"
+  >
+    <span>{{ 'TryOnNotAvailable' | translate }}</span>
+  </div>
+  <!--
+<div id="my-fitmix-container"></div>
+e-->
+  <div
+    *ngIf="product.type.includes('S') || product.type.includes('P')"
+    class="tryUploadContainer"
+    [class.tryOnFullscreen]="isFullscreen"
+  >
+    <div id="main-photo" class="main-photo">
+      <br *ngIf="!isFullscreen" />
+      <button
+        *ngIf="isFullscreen"
+        type="button"
+        class="exitFullscreenBtn"
+        (click)="exitFullscreen()"
+        aria-label="Exit full screen"
+      >
+        ×
+      </button>
+      <div class="upload-container" id="upload-container">
+        <div class="previewControlsBox" *ngIf="!isFullscreen">
+          <div
+            class="arrow-up"
+            (touchstart)="previewUp()"
+            (mousedown)="previewUp()"
+            (touchend)="mouseup()"
+            (mouseup)="mouseup()"
+            (mouseleave)="mouseup()"
+          ></div>
+          <div
+            class="arrow-down"
+            (touchstart)="previewDown()"
+            (mousedown)="previewDown()"
+            (touchend)="mouseup()"
+            (mouseup)="mouseup()"
+            (mouseleave)="mouseup()"
+          ></div>
+          <div
+            class="arrow-left"
+            (touchstart)="previewLeft()"
+            (mousedown)="previewLeft()"
+            (touchend)="mouseup()"
+            (mouseup)="mouseup()"
+            (mouseleave)="mouseup()"
+          ></div>
+          <div
+            class="arrow-right"
+            (touchstart)="previewRight()"
+            (mousedown)="previewRight()"
+            (touchend)="mouseup()"
+            (mouseup)="mouseup()"
+            (mouseleave)="mouseup()"
+          ></div>
+          <div class="center-box"></div>
+
+          <div class="fullscreenBtn" (click)="enterFullscreen()">
+            {{ 'Full Screen' | translate }}
+          </div>
+        </div>
+        <div class="tryOnStage">
+          <img
+            id="thumbnail"
+            class="thumbnail"
+            (load)="onPhotoLoad()"
+            [src]="thumbSrc"
+            alt="image"
+          />
+          <img
+            id="productPreview"
+            class="productPreview"
+            src="{{ product.prevImg }}"
+            alt="image"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="uploadBottom" *ngIf="!isFullscreen">
+      <span class="uploadBtn">
+        {{ 'Load my picture' | translate }}
+        <input
+          id="imgInput"
+          type="file"
+          accept="image/*"
+          (click)="imgInput.value = null"
+          (change)="showMyImage($event.target.files)"
+          #imgInput
+        />
+      </span>
+      <div
+        id="tryProductBtn"
+        class="tryProduct disabledBtn"
+        (click)="tryProductBtn()"
+      >
+        {{ 'Try On' | translate }}
+      </div>
+      <div class="clearImage" (click)="clearImage()">
+        {{ 'Clear Preview' | translate }}
+      </div>
+    </div>
+  </div>
+</div>

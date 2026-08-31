@@ -1,0 +1,288 @@
+/* Top Bar styles */
+
+.topBarContainer {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  min-width: 650px;
+  width: 1200px;
+  padding: inherit;
+  height: inherit;
+  margin: 0 auto;  
+  padding-left: 0px;   
+}
+
+.contactContainer {
+  border: dotted 0px black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  padding: inherit;
+  height: 55px;
+  margin: 0 auto;  
+  padding-left: 0px;  
+}
+
+.contactBox {
+  border: dotted 0px black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  padding: inherit;
+  height: 55px;
+  margin: 0 auto;  
+  padding-left: 0px; 
+  margin-right: 20px;  
+}
+
+.contactBox div {
+  border: solid 2px white;
+  position: relative;
+  display: block;
+  float: right;
+  width: 30px;
+  height: 30px;  
+  padding: 5px 5px 5px -5px;
+  margin-left: 7px;
+  border-radius: 20px;
+}
+
+.contactContainer .material-icons {  
+  color: white;
+  font-size: 18px;
+  padding: 4px;  
+}
+
+.contactBox div:nth-child(3):hover { 
+  border: solid 2px transparent;
+  background-color: blueviolet;
+}
+
+.contactBox div:nth-child(2):hover { 
+  border: solid 2px transparent;
+  background-color: green;
+}
+
+.contactBox div:nth-child(1):hover { 
+  border: solid 2px transparent;
+  background-color: navy;
+}
+
+.logo {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: auto;
+  margin: 10px auto  
+}
+
+.logo a {
+  width: auto;
+}
+
+h1 {
+  border: solid 0px black;
+  font-style: italic;
+  font-weight: bolder;
+  position: relative;
+  display: block;
+  float: left;
+  width: 220px;
+  color: white;
+  margin: 0;
+}
+
+h5 {
+  border: solid 0px black;
+  font-style: italic;
+  font-weight: bolder;
+  position: relative;
+  display: block;  
+  width: 220px;
+  color: white;
+  margin: 0;
+  letter-spacing: 3.6px;
+}
+
+.cartBtn {
+  border: solid 0px black;
+  position: relative;
+  float: right;
+  width: 60px;
+  margin: 15px auto;  
+}
+
+.itemsCnt {
+  border: solid 2px #1976d2;
+  position: absolute;
+  right: 6px;
+  top: 11px;
+  color: blue;
+  font-weight: bold;
+  font-size: 14px;
+  width: 20px;
+  background-color: lightcyan;
+  border-radius: 20px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.btnHidden {
+  visibility: hidden;
+}
+
+.btnVisible {
+  visibility: visible;
+}
+
+.checkout {
+  color: slateblue;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.themeSelction {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: right;
+  width: 100px;
+  height: 40px;  
+  margin: 15px auto;    
+}
+
+.blueTheme {
+  border: solid 2px lightskyblue;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background-color: slateblue;
+  border-radius: 25px;
+  margin: 5px;
+  box-shadow: inset 0 0 7px 1px skyblue;
+}
+
+.darkGrayTheme {
+  border: solid 2px lightslategray;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background-color: #252526;
+  border-radius: 25px;
+  margin: 5px;
+  box-shadow: inset 0 0 7px 1px slategray;
+}
+
+.blueTheme:hover, .darkGrayTheme:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+/***************************************/
+
+@media screen and (max-width: 710px) {
+  
+  .contactContainer {
+    border: dotted 0px black;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: unset;
+    right: unset;
+    width: 100%;
+    padding: inherit;
+    height: 40px;
+    margin: 0 auto; 
+     
+    background-color: skyblue;
+    z-index: 1000;
+  }
+
+  .contactBox {
+    border: dotted 0px black;
+    position: relative;
+    display: block;
+    width: 150px;
+    padding: inherit;
+    height: 25px;
+    margin: 0 auto;
+  }
+
+  .contactBox div {
+    border: solid 2px white;
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;  
+    padding: 5px 5px 5px -5px;
+    margin: -20px 10px -5px 10px;    
+    border-radius: 20px;
+  }
+
+  .contactContainer .material-icons {  
+    color: white;
+    font-size: 20px;
+    padding: 3px;  
+  }
+  
+  .logo {
+    width: 70%;   
+    padding-top: 5px;
+    margin-left: 5%; 
+  }
+
+  h1 {
+    font-size: 24px;    
+  }
+
+  h5 {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  
+  .topBarContainer {
+    border: solid 0px black;
+    min-width: unset;
+    width: 100%;
+    margin: 15% auto;
+  }  
+
+  .cartBtn {
+    position: absolute;
+    right: 0.5em;
+  }
+
+  .themeSelction {
+    width: 100px;
+    height: 40px;
+    top: 65px;
+    right: 3em;
+  }
+}
+
+@media screen and (max-width: 600px) {   
+  .cartBtn {
+    position: absolute;
+    margin: 15px auto;  
+    width: auto;
+  }
+  
+  .material-icons {
+    margin-right: -4px;
+  }
+
+  .checkout {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {   
+  .themeSelction {
+    border: solid 0px black;
+    top: -5px;
+    right: 4em;
+  }
+}

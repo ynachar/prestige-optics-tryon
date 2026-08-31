@@ -1,0 +1,33 @@
+{
+  "Language": "Language",
+  "en": "English",
+  "fr": "French",
+
+  "Welcome Message": "Welcome to Prestige Optics where you will find the best of the market designs and innovations.",
+  "Main Message": "It's not the year 2100 yet, but pretty close: See yourself in your favorite prescription or sun glasses from the comfort of your home at the tip of your fingers. ",
+
+  "Home": "Home",
+  "Products": "Products",
+
+  "Convenient!": "Convenient!",
+  "ConvenientText": "Try the latest pairs on the market whenever you want! It is never too late to check out the latest innovations of prescription eye glasses or sunglasses. ",
+
+  "Safe!": "Safe!",
+  "SafeText": "Enjoy the latest pairs without having any doubt for your safety! You can try all you want without being worried about your personal hygiene or safety.",
+
+  "Fast!": "Fast!",
+  "FastText": "It is as quick and easy as 1-2-3!</p><ol><li>Select product to preview</li><li>Upload your picture or take it from your device </li><li>Try it on</li></ol><p>So Fast that you will be able to browse the whole selection without breaking a sweat.",
+
+  "TryOnNotAvailable": "Try on feature is not available for this product",
+
+  "OurBrands": "Our Brands",
+  "OurSelection": "Our Selection",
+  "OurBenefits": "Our Benefits",
+
+  "AllRightsReserved": "All Rights Reserved",
+
+  "PickFrame": "I select a pair",
+  "UploadPhoto": "I upload my picture",
+  "TryItOn": "I try it on"
+  
+}

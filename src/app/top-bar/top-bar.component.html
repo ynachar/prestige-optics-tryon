@@ -1,0 +1,39 @@
+<div class="app-top-bar" style="background-color: #1976d2;">  
+  <div class="topBarContainer">
+    <div class="logo">
+      <!-- [routerLink]="['/']" -->
+      <a (click)="goToUrl('/home')">        
+        <!--
+        <img width="320" src="https://lh3.googleusercontent.com/pw/ACtC-3cVJXrp0mW1wiqtoiOZpaG5r9ZWouPExlC4EeDBitdq8H8Ghbw1QcsbiMeZGVqhkXtyas9kEgOcSkMAiFOY_VkMyySOU8M15ti86Sg5lXdEf80rNYHU0T07I_oAgtQzS9WHkiG8kLic4eFJKPDIxwM3=w457-h128-no?authuser=0" alt="Prestige Optics - Designs & Innovations" />
+        -->
+        <h1>Prestige Optics</h1><br />
+        <h5>Designs & Innovations</h5>
+      </a>
+    </div>
+
+    <a id="cartButton" class="cartBtn button fancy-button btnVisible" routerLink="/cart" style="visibility: visible;">
+      <i class="material-icons">shopping_cart</i><span class="checkout" hidden>{{'Checkout' | translate}}</span>
+      &nbsp;<span class="itemsCnt" *ngIf="itemsCnt > 0">{{itemsCnt}}</span>
+    </a>
+
+    <div class="themeSelction">
+      <div class="blueTheme" (click)="switchTheme($event)" title="Switch to Blue theme"></div>
+      <div class="darkGrayTheme" (click)="switchTheme($event)" title="Switch to Dark Gray theme"></div>
+    </div>
+    <div class="contactContainer">
+      <div *ngFor="let contact of contactInfoFiltered | slice:0:1; let l = index;" class="contactBox">
+        <div *ngFor="let contDet of contact.location; let i = index;">
+          <a *ngIf="contact.location[i].contactType == 'Email'" href="mailto:{{contact.location[i].contactValue}}">
+            <i class="material-icons">email</i>
+          </a>
+          <a *ngIf="contact.location[i].contactType == 'Phone Number'" href="tel:{{contact.location[i].contactValue}}">
+            <i class="material-icons">phone</i>
+          </a>
+          <a *ngIf="contact.location[i].contactType == 'Facebook'" href="{{contact.location[i].contactValue}}" target="_blank">
+            <i class="material-icons">facebook</i>
+          </a>          
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

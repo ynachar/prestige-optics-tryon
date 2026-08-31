@@ -1,0 +1,121 @@
+.pageContainer {
+  width: 100%;  
+}
+
+.pageTitle {
+  border: solid 1px lightcyan;
+  position: relative;
+  display: block;
+  background-color: lightblue;
+  width: 100%;
+  height: +60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+  
+  font-weight: bold;
+}
+
+.pageTitle h4 {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.contactInfoBoxContainer {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 50%;
+  min-width: 350px;
+  padding: 0px 5px;  
+}
+
+.contactInfoBox {  
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+  min-width: 350px;    
+}
+
+.contactInfoBox fieldset {
+  border: solid 1px lightskyblue;  
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.contactInfoBox legend{
+  font-weight: bold;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mapBox {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: 50%;
+  min-width: 365px;
+  padding: 5px 5px 5px 0px;  
+}
+
+.contactInfo {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: auto;
+  padding: 5px;  
+}
+
+.contactInfo div {
+  padding-bottom: 5px;
+}
+
+.material-icons {
+  vertical-align: bottom;
+  padding-right: 10px;
+  cursor: default;
+}
+
+.contactType {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  font-weight: bold;
+  width: 100%;
+}
+
+.contactValue {
+  border: solid 0px black;
+  position: relative;
+  display: block;
+  float: left;
+  width: auto;
+}
+
+.embededMap {
+  border: solid 1px lightblue; 
+  border-radius: 5px; 
+  position: relative; 
+  display: flex; 
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+  .contactInfoBoxContainer,
+  .contactInfoBox, 
+  .mapBox {
+    width: 100%;
+  }   
+}

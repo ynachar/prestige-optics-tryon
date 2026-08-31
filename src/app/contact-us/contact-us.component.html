@@ -1,0 +1,28 @@
+<div class="pageContainer"> 
+  <div class="pageTitle"><h4>Contact</h4></div>
+
+  <div class="contactInfoBoxContainer">
+    <div *ngFor="let contact of contactInfo; let l = index;" class="contactInfoBox">
+      <fieldset>
+        <legend>PrestigeOptics# {{l+1}}</legend>
+        <a (click)="OpenInfowindowForMarker(l)" hidden>Find {{l+1}}</a>
+        <div *ngFor="let contDet of contact.location; let i = index;" class="contactInfo">
+          <div *ngIf="contact.location[i].contactType != ''" class="contactType">
+            <i id="" class="material-icons" *ngIf="contact.location[i].contactType == 'Address'">business</i>
+            <i id="" class="material-icons" *ngIf="contact.location[i].contactType == 'Email'">email</i>
+            <i id="" class="material-icons" *ngIf="contact.location[i].contactType == 'Phone Number'">phone</i>
+            <i id="" class="material-icons" *ngIf="contact.location[i].contactType == 'Fax Number'">print</i>
+            <i id="" class="material-icons" *ngIf="contact.location[i].contactType == 'Facebook'">facebook</i>
+            {{contact.location[i].contactType | translate}}:
+          </div>
+          <div *ngIf="contact.location[i].contactValue != ''" class="contactValue">
+            {{contact.location[i].contactValue}}
+          </div>          
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="mapBox"> 
+    <iframe src="https://www.google.com/maps/d/embed?mid=1vNk0bESmok3GDFXlrD8Z3wGjtDIse2Af&hl=fr" width="100%" height="560" frameborder="1" class="embededMap" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
+</div>

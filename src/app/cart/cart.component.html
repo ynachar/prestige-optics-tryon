@@ -1,0 +1,61 @@
+<div class="pageContainer">
+  <div class="pageTitle"><h4>{{ 'Cart' | translate }}</h4></div>
+  <div class="controlBtns">
+    <div class="backToListBtn" (click)="backToList()">Back to list</div>
+    <div *ngIf="items.length > 0" class="clearCartBtn" (click)="clearCart()">{{'Clear Cart' | translate}}</div>
+  </div>
+
+  <div *ngIf="items.length > 0" class="cartItemCnt">
+    <br />
+    <span>{{'Basket' | translate}}: {{items.length}} {{'Item'|translate}}</span><span *ngIf="items.length > 1">(s)</span>
+  </div>
+
+  <div class="cartEmpty" *ngIf="items.length == 0">
+    <span>{{ 'Cart is Empty' | translate }}</span>
+  </div>
+  <div class="cartItemBox">
+    <div class="cartItem" *ngFor="let item of items">
+      <div class="imgProdBox">
+        <img id="prodImg_{{item.id}}" class="imgProduct" *ngIf="item.img" src="{{item.img[0]}}" (mouseover)="mouseOver(item, 1)" (mouseleave)="mouseLeave(item)" alt="image"/>      
+      </div>
+      <div class="prodDetBox">
+        <a [routerLink]="['/products', item.id]">{{item.name}}</a>
+        <br />
+        <span class="itemDescr">{{ item.detail | slice:0:47 }}</span><span *ngIf="item.detail.length > 47">...</span>
+        <br />
+        <span class="saleText" *ngIf="item.promo != undefined">On Sale: {{ item.promo }} % Off</span>
+      </div>  
+      <div class="removeFromCartBtn" (click)="removeFromCart(item.id)">X</div>  
+      <div class="priceProdBox">
+        <span [ngClass]="{'crossedLine': item.promo != undefined}" class="textRight">{{ item.price | currency }}</span>
+        <br />
+        <span *ngIf="item.promo != undefined" class="salePrice textRight"> {{ item.price*(100-item.promo)/100 | currency }}</span>
+      </div>
+      <div class="itemQty">
+          <span>Qty: {{ item.qty }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="items.length > 0" class="cartSummary">
+    <div class="cartSummaryHdr">{{'Cart Summary'|translate}}</div>
+    <div class="cartSummaryCntBox">
+      <div class="cartTotalText">{{'Items in the basket'|translate}}: </div>
+      <div class="cartTotalAmount">{{itemsCnt}}</div>
+    </div>
+    <div class="cartSummaryBox">
+      <div class="cartTotalText">{{'Cart Total'|translate}}</div>
+      <div class="cartTotalAmount" [ngClass]="{'crossedLine': cartTotalSale > 0}">{{cartTotal | currency}}</div>
+    </div>
+    <div class="cartSummaryBox">
+      <div class="cartTotalText cartTotalSale">{{'Savings' | translate}}</div>
+      <div class="cartTotalAmount cartTotalSale">-{{cartSaleAmount | currency}}</div>
+    </div>
+    <div class="cartSummaryBox">
+      <div class="cartTotalText">{{'New Cart Total' | translate}}</div>
+      <div class="cartTotalAmount">{{cartTotalSale | currency}}</div>
+    </div>
+    <hr />
+    <div *ngIf="items.length > 0" class="btn" routerLink="/request-showing">{{'Request Showing' | translate}}</div>
+  </div>
+</div>

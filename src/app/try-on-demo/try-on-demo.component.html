@@ -1,0 +1,39 @@
+<div class="pageContainer">
+  <div class="pageTitle"><h2>Home</h2></div> 
+
+  <div class="titleBox">
+    <h2>{{'Virtual Try-On' | translate}}</h2>
+    <p>
+      {{'Main Message' | translate}}
+    </p>
+  </div>
+  <div class="tryOnExplanationBox">
+    <div class="tryOnExplanation">
+      <span>1</span>
+      <p>{{'PickFrame' | translate}}</p>
+      <div class="borderRight"></div>
+    </div>
+    <div class="tryOnExplanation tryOnExplanationMobile">        
+      <span>2</span>
+      <p>{{'UploadPhoto' | translate}}</p>
+      <p></p>
+      <div class="borderRight"></div>  
+    </div>
+    <div class="tryOnExplanation">
+      <span>3</span>
+      <p>{{'TryItOn' | translate}}</p>
+    </div>
+  </div>
+  <div class="modelImgContainer">
+    <img id="modelImg" class="modelImg fade" src="https://secure.i.telegraph.co.uk/multimedia/archive/03249/archetypal-female-_3249633c.jpg" 
+    style="background-color: green;" alt="image"/>
+    <section class="tryOn slider productPreviewBox" data-sizes="75vw">
+      <div *ngFor="let product of products | slice:0:7">
+        <a [title]="product.detail" [routerLink]="['/products', product.id]">
+          <img src="{{product.prevImg}}" hidden/>          
+        </a>
+      </div>
+    </section>
+  </div>
+
+</div>
