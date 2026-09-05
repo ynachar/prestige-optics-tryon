@@ -34,8 +34,8 @@ export class ProductDetailsComponent
   usingDefaultPhoto = true;
   isFullscreen = false;
   private fullscreenKeyHandler = null;
-  // Local copy — remote Wikimedia URL is often blocked in StackBlitz.
-  defaultThumbSrc = 'assets/images/unknown-person.jpg';
+  // Leading slash required — relative "assets/..." breaks under /products/:id.
+  defaultThumbSrc = '/assets/images/unknown-person.jpg';
   thumbSrc = this.defaultThumbSrc;
 
   /** Keep uploaded photo across refresh for 15 days (cookie + localStorage). */
