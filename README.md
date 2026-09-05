@@ -2,24 +2,22 @@
 
 Angular storefront demo with MediaPipe iris-based virtual try-on.
 
-## Links
+## StackBlitz (canonical)
 
 | | URL |
 |---|---|
-| **GitHub** | https://github.com/ynachar/angular-ffxezk |
-| **StackBlitz (edit)** | https://stackblitz.com/edit/github/ynachar/angular-ffxezk |
-| **StackBlitz (open)** | https://stackblitz.com/github/ynachar/angular-ffxezk |
+| **Edit** | https://stackblitz.com/edit/angular-ffxezk-ablmogh9 |
+| **Preview** | https://angular-ffxezk-ablmogh9.stackblitz.io |
+| **GitHub** | https://github.com/ynachar/prestige-optics-tryon |
 
-Those StackBlitz links always load the latest `main` from GitHub after you push.
+`git push` updates GitHub. To refresh the StackBlitz project above, drag the contents of `stackblitz-sync/` (or the Desktop zip) onto the StackBlitz file tree, then save.
 
-## Cursor → GitHub → StackBlitz
+## Cursor → GitHub
 
 ```bash
 cd ~/DEV-Github/prestige-optics-tryon
-git add -A && git commit -m "your message" && git push origin main
+git add -A && git commit -m "your message" && git push prestige main && git push origin main
 ```
-
-Then refresh the StackBlitz tab.
 
 ## Local
 
